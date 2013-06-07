@@ -1,28 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Knowsis API Documentation by knowsis</title>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Knowsis API Documentation : " />
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Knowsis API Documentation</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Knowsis API Documentation</h1>
-        <p></p>
 
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/knowsis">View on GitHub</a>
 
-        <p class="view"><a href="https://github.com/knowsis">View My GitHub Profile</a></p>
+          <h1 id="project_title">Knowsis API Documentation</h1>
+          <h2 id="project_tagline"></h2>
 
-      </header>
-      <section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h1>
 <a name="knowsis-api-documentation" class="anchor" href="#knowsis-api-documentation"><span class="octicon octicon-link"></span></a>Knowsis API Documentation</h1>
 
@@ -50,11 +54,15 @@
 
 <p>The following parameters MUST appear in every request:</p>
 
-<p><strong>oauth_consumer_key</strong> - The consumer key provided to you by Knowsis
-<strong>oauth_nonce</strong> - A random string of characters that differs from call to call (this helps to prevent replay attacks) be sure to make these characters legal (percent-encoded) 
-<strong>oauth_timestamp</strong> - The number of seconds elapsed since midnight, 1 January 1970. Be sure this is within ten minutes of the real time
-<strong>oauth_signature_method</strong> - The method used to generate the signature. We currently only support HMAC-SHA1
-<strong>oauth_signature</strong> - You generate the signature by passing into a cryptographic function your consumer key, your shared secret, and an encoded version of the "base string" </p>
+<p><strong>oauth_consumer_key</strong> - The consumer key provided to you by Knowsis</p>
+
+<p><strong>oauth_nonce</strong> - A random string of characters that differs from call to call (this helps to prevent replay attacks) be sure to make these characters legal (percent-encoded) </p>
+
+<p><strong>oauth_timestamp</strong> - The number of seconds elapsed since midnight, 1 January 1970. Be sure this is within ten minutes of the real time</p>
+
+<p><strong>oauth_signature_method</strong> - The method used to generate the signature. We currently only support HMAC-SHA1</p>
+
+<p><strong>oauth_signature</strong> - You generate the signature by passing into a cryptographic function your consumer key, your shared secret, and an encoded version of the "base string" </p>
 
 <p>The oauth_version parameter is optional; the value will be assumed to be 1.0 if it is not provided.
 </p>
@@ -1023,11 +1031,15 @@ APPL
 </tr>
 </table>
       </section>
-      <footer>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -1038,6 +1050,7 @@ APPL
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
+
 
   </body>
 </html>
