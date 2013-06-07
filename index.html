@@ -44,7 +44,6 @@
 
 <p>Times and dates are provided in UTC timezone and are in ISO 8601 format.</p>
 
-
 <h2>
 <a name="authentication" class="anchor" href="#authentication"><span class="octicon octicon-link"></span></a>Authentication</h2>
 
@@ -52,39 +51,47 @@
 
 <p>The following parameters MUST appear in every request:</p>
 
-<p>oauth_consumer_key - The consumer key provided to you by Knowsis
-oauth_nonce - A random string of characters that differs from call to call (this helps to prevent replay attacks) be sure to make these characters legal (percent-encoded) 
-oauth_timestamp - The number of seconds elapsed since midnight, 1 January 1970. Be sure this is within ten minutes of the real time
-oauth_signature_method - 
-The method used to generate the signature. We currently only support HMAC-SHA1
-oauth_signature - You generate the signature by passing into a cryptographic function your consumer key, your shared secret, and an encoded version of the "base string" </p>
+<ul>
+<li>oauth_consumer_key - The consumer key provided to you by Knowsis</li>
+<li>oauth_nonce - A random string of characters that differs from call to call (this helps to prevent replay attacks) be sure to make these characters legal (percent-encoded) </li>
+<li>oauth_timestamp - The number of seconds elapsed since midnight, 1 January 1970. Be sure this is within ten minutes of the real time</li>
+<li>oauth_signature_method - </li>
+<li>The method used to generate the signature. We currently only support HMAC-SHA1</li>
+<li>oauth_signature - You generate the signature by passing into a cryptographic function your consumer key, your shared secret, and an encoded version of the "base string" </li>
+</ul><p>The oauth_version parameter is optional; the value will be assumed to be 1.0 if it is not provided.
+</p>
 
-<p>The oauth_version parameter is optional; the value will be assumed to be 1.0 if it is not provided.
+<h2>
+<a name="response-formats" class="anchor" href="#response-formats"><span class="octicon octicon-link"></span></a>Response Formats</h2>
 
-Response Formats
-We can render responses for you using JSON, XML or plain text. </p>
+<p>We can render responses for you using JSON, XML or plain text. </p>
 
 <p>The default format is JSON</p>
 
 <p>In order to specify your choice of response format use a standard HTTP Accept header.</p>
 
-<p>Accept: application/json, text/javascript</p>
+<p><code>Accept: application/json, text/javascript</code></p>
 
-<p>Accept: application/xml, text/xml</p>
+<p><code>Accept: application/xml, text/xml</code></p>
 
-<p>Accept: text/plain</p>
+<p><code>Accept: text/plain</code></p>
 
-<p>API Endpoints
-Access to the Knowsis API is available through a RESTful interface</p>
+
+<h1>
+<a name="api-endpoints" class="anchor" href="#api-endpoints"><span class="octicon octicon-link"></span></a>API Endpoints</h1>
+
+<p>Access to the Knowsis API is available through a RESTful interface</p>
 
 <p>The Knowsis API is available at <a href="http://api.knows.is/">http://api.knows.is/</a></p>
 
-<p>GET /assets/
-The assets endpoint will return an asset list resource containing all available asset resources.</p>
+<h2>
+<a name="get-assets" class="anchor" href="#get-assets"><span class="octicon octicon-link"></span></a>GET /assets/</h2>
+
+<p>The assets endpoint will return an asset list resource containing all available asset resources.</p>
 
 <p>There are also four asset list filter endpoints which will only return assets of the requested type:</p>
 
-<p>Endpoint
+<table></table><p>Endpoint
 Type
 Description
 equities
@@ -359,15 +366,16 @@ Accept: application/xml, text/xml</p>
 <p>ARM Holdings PLC$ARMH2012-12-31T00:00:00Z2013-01-01T00:00:00Z2013-01-01T00:00:00Z50123810664828233802205122012-12-31T00:00:00Z1211156482823380220512
 Plain Text Response</p>
 
-<p>GET <a href="http://api.knows.is/assets/%24ARMH/sentiment/?start=20121231&amp;end=20130101">http://api.knows.is/assets/$ARMH/sentiment/?start=20121231&amp;end=20130101</a>
-Accept: text/plain</p>
+<pre><code>GET http://api.knows.is/assets/$ARMH/sentiment/?start=20121231&amp;end=20130101
+Accept: text/plain
+</code></pre>
 
-<p>name: ARM Holdings PLC
+<pre><code>name: ARM Holdings PLC
 identifier:$ARMH
 startdate:2012-12-31T00:00:00Z
-enddate:2013-01-01T00:00:00Z</p>
+enddate:2013-01-01T00:00:00Z
 
-<p>date:2013-01-01T00:00:00Z
+date:2013-01-01T00:00:00Z
 sentiment:current:-26
 sentiment:previous:-24
 sentiment:change:-2
@@ -376,9 +384,9 @@ gender:Male:64
 gender:Female:8
 gender:unspecified:28
 location:North America:28
-location:Europe:38</p>
+location:Europe:38
 
-<p>date:2012-12-31T00:00:00Z
+date:2012-12-31T00:00:00Z
 sentiment:current:-24
 sentiment:previous:-2
 sentiment:change:-22
@@ -387,9 +395,11 @@ gender:Male:45
 gender:Female:32
 gender:unspecified:23
 location:Asia:82
-location:South America:18</p>
+location:South America:18
+</code></pre>
 
-<p>Asset Sentiment Resource</p>
+<h3>
+<a name="asset-sentiment-resource" class="anchor" href="#asset-sentiment-resource"><span class="octicon octicon-link"></span></a>Asset Sentiment Resource</h3>
 
 <p>The asset sentiment resource is made up of the following fields:</p>
 
@@ -412,8 +422,10 @@ datapoints
 list of datapoint resources
 datapoint</p>
 
-<p>Datapoint Resource
-{
+<h3>
+<a name="datapoint-resource" class="anchor" href="#datapoint-resource"><span class="octicon octicon-link"></span></a>Datapoint Resource</h3>
+
+<pre><code>{
   "date": "2013-01-01T00:00:00Z",
   "sentiment": {
     "current": -19,
@@ -439,7 +451,8 @@ datapoint</p>
       "unspecified": 12
     }
   }
-}</p>
+}
+</code></pre>
 
 <p>The datapoint resource is made up of the following fields:</p>
 
@@ -459,12 +472,14 @@ demographics
 demographics resource
 demographics</p>
 
-<p>Sentiment Resource
-  "sentiment": {
+<p>Sentiment Resource</p>
+
+<pre><code>  "sentiment": {
     "current": 64,
     "previous": 58,
     "change": -6
-  }</p>
+  }
+</code></pre>
 
 <p>The sentiment resource is made up of the following fields:</p>
 
@@ -485,9 +500,10 @@ absolute change between current and previous sentiment values</p>
 
 <p>Volume Resource</p>
 
-<p>"volume":{
+<pre><code>  "volume":{
     "change": -36
-  }</p>
+  }
+</code></pre>
 
 <p>The sentiment resource is made up of the following fields:</p>
 
@@ -498,8 +514,9 @@ change
 string
 percentage change from normal social conversation volume level</p>
 
-<p>Demographics Resource
-"demographics": {
+<p>Demographics Resource</p>
+
+<pre><code>"demographics": {
   "gender": {
     "Male": 64,
     "Female": 8,
@@ -514,7 +531,8 @@ percentage change from normal social conversation volume level</p>
     "Australasia": 5,
     "unspecified": 12
   }
-}</p>
+}
+</code></pre>
 
 <p>The demographics resource is made up of the following fields:</p>
 
@@ -542,7 +560,7 @@ JSON Response</p>
 <p>GET <a href="http://api.knows.is/assets/%24ARMH/themes/">http://api.knows.is/assets/$ARMH/themes/</a>
 Accept: application/json, text/javascript</p>
 
-<p>{
+<pre><code>{
   "name": "ARM Holdings PLC",
   "identifier": "$ARMH",
   "startdate": "2013-01-01T00:00:00Z",
@@ -568,14 +586,44 @@ Accept: application/json, text/javascript</p>
       ]
     }
   ]
-}</p>
+}
+</code></pre>
 
 <p>XML Response</p>
 
 <p>GET <a href="http://api.knows.is/assets/%24ARM/themes/">http://api.knows.is/assets/$ARM/themes/</a>
 Accept: application/xml, text/xml</p>
 
-<p>ARM Holdings PLC$ARMH2013-01-01T00:00:00Z2013-01-01T00:00:00Z2013-01-01T00:00:00Zthis is the title of the themethis is another theme’s title2013-01-02T00:00:00Zthis is the title of the themethis is another theme’s title</p>
+<pre><code>&lt;response&gt;
+    &lt;name&gt;ARM Holdings PLC&lt;/name&gt;
+    &lt;identifier&gt;$ARMH&lt;/identifier&gt;
+    &lt;startdate&gt;2013-01-01T00:00:00Z&lt;/startdate&gt;
+    &lt;enddate&gt;2013-01-01T00:00:00Z&lt;/enddate&gt;
+    &lt;dailythemes&gt;
+      &lt;dailytheme&gt;
+        &lt;date&gt;2013-01-01T00:00:00Z&lt;/date&gt;
+        &lt;themes&gt;
+          &lt;theme&gt;
+            &lt;title&gt;this is the title of the theme&lt;/title&gt;
+          &lt;/theme&gt;
+          &lt;theme&gt;
+            &lt;title&gt;this is another theme’s title&lt;/title&gt;
+          &lt;/theme&gt;
+        &lt;/themes&gt;
+      &lt;/dailytheme&gt;
+      &lt;date&gt;2013-01-02T00:00:00Z&lt;/date&gt;
+        &lt;themes&gt;
+          &lt;theme&gt;
+            &lt;title&gt;this is the title of the theme&lt;/title&gt;
+          &lt;/theme&gt;
+          &lt;theme&gt;
+            &lt;title&gt;this is another theme’s title&lt;/title&gt;
+          &lt;/theme&gt;
+        &lt;/themes&gt;
+      &lt;/dailytheme&gt;
+    &lt;/dailythemes&gt;
+&lt;/response&gt;
+</code></pre>
 
 <p>Plain Text Response</p>
 
