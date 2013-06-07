@@ -1,28 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Knowsis API Documentation by knowsis</title>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Knowsis API Documentation : " />
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Knowsis API Documentation</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Knowsis API Documentation</h1>
-        <p></p>
 
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/knowsis">View on GitHub</a>
 
-        <p class="view"><a href="https://github.com/knowsis">View My GitHub Profile</a></p>
+          <h1 id="project_title">Knowsis API Documentation</h1>
+          <h2 id="project_tagline"></h2>
 
-      </header>
-      <section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h1>
 <a name="what-is-the-knowsis-api" class="anchor" href="#what-is-the-knowsis-api"><span class="octicon octicon-link"></span></a>What is the Knowsis API?</h1>
 
@@ -48,52 +52,39 @@
 
 <p>The following parameters MUST appear in every request:</p>
 
-<pre lang="oauth_consumer_key```"><code>The consumer key provided to you by Knowsis
-```oauth_nonce```
-A random string of characters that differs from call to call (this helps to prevent replay attacks)
-be sure to make these characters legal (percent-encoded)
-oauth_timestamp
-The number of seconds elapsed since midnight, 1 January 1970. Be sure this is within ten minutes of the real time
-oauth_signature_method
+<p>oauth_consumer_key - The consumer key provided to you by Knowsis
+oauth_nonce - A random string of characters that differs from call to call (this helps to prevent replay attacks) be sure to make these characters legal (percent-encoded) 
+oauth_timestamp - The number of seconds elapsed since midnight, 1 January 1970. Be sure this is within ten minutes of the real time
+oauth_signature_method - 
 The method used to generate the signature. We currently only support HMAC-SHA1
-oauth_signature
-You generate the signature by passing into a cryptographic function your consumer key, your shared secret, and an encoded version of the "base string" 
+oauth_signature - You generate the signature by passing into a cryptographic function your consumer key, your shared secret, and an encoded version of the "base string" </p>
 
-
-The oauth_version parameter is optional; the value will be assumed to be 1.0 if it is not provided.
+<p>The oauth_version parameter is optional; the value will be assumed to be 1.0 if it is not provided.
 
 Response Formats
-We can render responses for you using JSON, XML or plain text. 
+We can render responses for you using JSON, XML or plain text. </p>
 
-The default format is JSON
+<p>The default format is JSON</p>
 
-In order to specify your choice of response format use a standard HTTP Accept header.
+<p>In order to specify your choice of response format use a standard HTTP Accept header.</p>
 
+<p>Accept: application/json, text/javascript</p>
 
-Accept: application/json, text/javascript
+<p>Accept: application/xml, text/xml</p>
 
-Accept: application/xml, text/xml
+<p>Accept: text/plain</p>
 
-Accept: text/plain
+<p>API Endpoints
+Access to the Knowsis API is available through a RESTful interface</p>
 
+<p>The Knowsis API is available at <a href="http://api.knows.is/">http://api.knows.is/</a></p>
 
+<p>GET /assets/
+The assets endpoint will return an asset list resource containing all available asset resources.</p>
 
+<p>There are also four asset list filter endpoints which will only return assets of the requested type:</p>
 
-
-
-
-
-API Endpoints
-Access to the Knowsis API is available through a RESTful interface
-
-The Knowsis API is available at http://api.knows.is/
-
-GET /assets/
-The assets endpoint will return an asset list resource containing all available asset resources.
-
-There are also four asset list filter endpoints which will only return assets of the requested type:
-
-Endpoint
+<p>Endpoint
 Type
 Description
 equities
@@ -109,15 +100,14 @@ forex
 list of asset resources
 A list of forex pairs
 
-Example Request/Response
+Example Request/Response</p>
 
-JSON Response
+<p>JSON Response</p>
 
-GET http://api.knows.is/assets/
-Accept: application/json, text/javascript
+<p>GET <a href="http://api.knows.is/assets/">http://api.knows.is/assets/</a>
+Accept: application/json, text/javascript</p>
 
-
-{
+<pre><code>{
   "assets": [
     {
       "name": "Anglo American PLC",
@@ -154,93 +144,53 @@ Accept: application/json, text/javascript
   ]
 }
 
+</code></pre>
 
+<p>XML Response</p>
 
-XML Response
+<p>GET <a href="http://api.knows.is/assets/">http://api.knows.is/assets/</a>
+Accept: application/xml, text/xml</p>
 
-GET http://api.knows.is/assets/
-Accept: application/xml, text/xml
+<p>Anglo American PLCEquityAAL:LNBloombergAAL.LReutersGB00B1XZS820ISINARM Holdings PLCEquityARM:LNBloombergARMH:USBloomberg</p>
 
-&lt;response&gt;
-  &lt;assets&gt;
-    &lt;asset&gt;
-      &lt;name&gt;Anglo American PLC&lt;/name&gt;
-      &lt;type&gt;Equity&lt;/type&gt;
-      &lt;identifiers&gt;
-        &lt;identifier&gt;
-          &lt;value&gt;AAL:LN&lt;/value&gt;
-          &lt;type&gt;Bloomberg&lt;/type&gt;
-        &lt;/identifier&gt;
-        &lt;identifier&gt;
-          &lt;value&gt;AAL.L&lt;/value&gt;
-          &lt;type&gt;Reuters&lt;/type&gt;
-        &lt;/identifier&gt;
-        &lt;identifier&gt;
-          &lt;value&gt;GB00B1XZS820&lt;/value&gt;
-          &lt;type&gt;ISIN&lt;/type&gt;
-        &lt;/identifier&gt;
-      &lt;/identifiers&gt;
-    &lt;/asset&gt;
-    &lt;asset&gt;
-      &lt;name&gt;ARM Holdings PLC&lt;/name&gt;
-      &lt;type&gt;Equity&lt;/type&gt;
-      &lt;identifiers&gt;
-        &lt;identifier&gt;
-          &lt;value&gt;ARM:LN&lt;/value&gt;
-          &lt;type&gt;Bloomberg&lt;/type&gt;
-        &lt;/identifier&gt;
-        &lt;identifier&gt;
-          &lt;value&gt;ARMH:US&lt;/value&gt;
-          &lt;type&gt;Bloomberg&lt;/type&gt;
-        &lt;/identifier&gt;
-      &lt;/identifiers&gt;
-    &lt;/asset&gt;
-  &lt;/assets&gt;
-&lt;/response&gt;
+<p>Plain Text Response</p>
 
+<p>GET <a href="http://api.knows.is/assets/">http://api.knows.is/assets/</a>
+Accept: text/plain</p>
 
-Plain Text Response
-
-GET http://api.knows.is/assets/
-Accept: text/plain
-
-name: Anglo American PLC"
+<p>name: Anglo American PLC"
 type: Equity
 id:Bloomberg:AAL:LN
 id:Reuters:AAL.L
-id:ISIN:GB00B1XZS820 
+id:ISIN:GB00B1XZS820 </p>
 
-name: ARM Holdings PLC
+<p>name: ARM Holdings PLC
 type: Equity
 id:BloomBerg|ARM:LN
-id:BloomBerg|ARMH:US
+id:BloomBerg|ARMH:US</p>
 
+<p>Asset List Resource
+The asset list resource is made up of the following fields:</p>
 
-
-Asset List Resource
-The asset list resource is made up of the following fields:
-
-Field
+<p>Field
 Type
 Description
 assets
 list of asset resources
-assets
+assets</p>
 
+<p>GET /assets/{IDENTIFIER}/</p>
 
+<p>The asset endpoint will return a single asset based on the specified {identifier} value. </p>
 
-GET /assets/{IDENTIFIER}/
+<p>Example Request/Response</p>
 
-The asset endpoint will return a single asset based on the specified {identifier} value. 
+<p>JSON Response</p>
 
-Example Request/Response
+<p>GET <a href="http://api.knows.is/assets/ARM.L/">http://api.knows.is/assets/ARM.L/</a>
+Accept: application/json, text/javascript</p>
 
-JSON Response
-
-GET http://api.knows.is/assets/ARM.L/
-Accept: application/json, text/javascript
-
-{
+<p>{
   "name": "ARM Holdings PLC",
   "identifiers": [
     {
@@ -252,41 +202,28 @@ Accept: application/json, text/javascript
       "type": "Bloomberg"
     }
   ]
-}
+}</p>
 
-XML Response
+<p>XML Response</p>
 
-GET http://api.knows.is/assets/ARM.L/
-Accept: application/xml, text/xml
+<p>GET <a href="http://api.knows.is/assets/ARM.L/">http://api.knows.is/assets/ARM.L/</a>
+Accept: application/xml, text/xml</p>
 
-&lt;response&gt;
-    &lt;name&gt;ARM Holdings PLC&lt;/name&gt;
-    &lt;identifiers&gt;
-      &lt;identifier&gt;
-        &lt;value&gt;ARM:LN&lt;/value&gt;
-        &lt;type&gt;Bloomberg&lt;/type&gt;
-      &lt;/identifier&gt;
-      &lt;identifier&gt;
-        &lt;value&gt;ARMH:US&lt;/value&gt;
-        &lt;type&gt;Bloomberg&lt;/type&gt;
-      &lt;/identifier&gt;
-    &lt;/identifiers&gt;
-&lt;/response&gt;
+<p>ARM Holdings PLCARM:LNBloombergARMH:USBloomberg</p>
 
-Plain Text Response
+<p>Plain Text Response</p>
 
-GET http://api.knows.is/assets/ARM.L/
-Accept: text/plain
+<p>GET <a href="http://api.knows.is/assets/ARM.L/">http://api.knows.is/assets/ARM.L/</a>
+Accept: text/plain</p>
 
-name:ARM Holdings PLC
+<p>name:ARM Holdings PLC
 identifier:BloomBerg|ARM:LN
-identifier:BloomBerg|ARMH:US
+identifier:BloomBerg|ARMH:US</p>
 
+<p>Asset Resource
+The asset resource is made up of the following fields:</p>
 
-Asset Resource
-The asset resource is made up of the following fields:
-
-field
+<p>field
 Type
 description
 name
@@ -294,30 +231,25 @@ string
 display name for this asset
 identifiers
 list of asset identifier resource
-list of asset identifier resource
+list of asset identifier resource</p>
 
-Asset Identifier Resource
+<p>Asset Identifier Resource</p>
 
-Accept: application/json, text/javascript
+<p>Accept: application/json, text/javascript
 {
   "identifier": "$MMM", 
   "type": "Cashtag"
-}
+}</p>
 
-Accept: application/xml, text/xml
-&lt;identifier&gt;
-  &lt;value&gt;$MMM&lt;/value&gt;
-  &lt;type&gt;"Cashtag&lt;/type&gt;
-&lt;/identifier&gt;
+<p>Accept: application/xml, text/xml
+$MMM"Cashtag</p>
 
-Accept: text/plain
-id:Cashtag|$MMM
+<p>Accept: text/plain
+id:Cashtag|$MMM</p>
 
+<p>The asset identifier resource is up of the following fields:</p>
 
-
-The asset identifier resource is up of the following fields:
-
-Field
+<p>Field
 Type
 Description
 identifier
@@ -325,18 +257,15 @@ string
 identifier value
 type
 string
-type of identifier
+type of identifier</p>
 
+<p>GET /assets/{IDENTIFIER}/sentiment/</p>
 
+<p>The asset sentiment endpoint will return a list of sentiment resources. The default view is the current day’s sentiment data for a single asset based on the specified {identifier} value. The date which the data refers to is also returned in the request</p>
 
+<p>For API consumers that have access to historical sentiment data there are optional parameters to get sentiment for a specified date range</p>
 
-GET /assets/{IDENTIFIER}/sentiment/
-
-The asset sentiment endpoint will return a list of sentiment resources. The default view is the current day’s sentiment data for a single asset based on the specified {identifier} value. The date which the data refers to is also returned in the request
-
-For API consumers that have access to historical sentiment data there are optional parameters to get sentiment for a specified date range
-
-Parameter
+<p>Parameter
 Format
 Description
 startdate
@@ -344,22 +273,22 @@ date - (YYYYMMDD)
 the first day in the requested range
 enddate
 date - (YYYYMMDD)
-the last day of the requested range
+the last day of the requested range</p>
 
-The asset sentiment endpoint will adhere to the following behaviour:
+<p>The asset sentiment endpoint will adhere to the following behaviour:</p>
 
-1) If no start date or end date is provided the data will be for the current day only.
+<p>1) If no start date or end date is provided the data will be for the current day only.
 2) If there is no start date, the data will be returned for the end date only.
 3) If there is no end date, the data range will span from the start date provided up until the current day.
-4) If the start date is after the end date, the start date will be ignored and the API will adhere to the step 3.
+4) If the start date is after the end date, the start date will be ignored and the API will adhere to the step 3.</p>
 
-Example request/response
-JSON Response
+<p>Example request/response
+JSON Response</p>
 
-GET http://api.knows.is/assets/$ARMH/sentiment/?startdate=20121231&amp;enddate=20130101
-Accept: application/json, text/javascript
+<p>GET <a href="http://api.knows.is/assets/%24ARMH/sentiment/?startdate=20121231&amp;enddate=20130101">http://api.knows.is/assets/$ARMH/sentiment/?startdate=20121231&amp;enddate=20130101</a>
+Accept: application/json, text/javascript</p>
 
-{
+<p>{
   "name": "ARM Holdings PLC",
   "identifier": "$ARMH",
   "startdate": "2012-12-31T00:00:00Z",
@@ -392,8 +321,8 @@ Accept: application/json, text/javascript
         }
       }
     },
-    {     
-      "date": "2012-12-31T00:00:00Z",     
+    {<br>
+      "date": "2012-12-31T00:00:00Z",<br>
       "sentiment": {
         "current": -4,
         "previous": -40,
@@ -420,86 +349,25 @@ Accept: application/json, text/javascript
       }
     }
   ]
-}
+}</p>
 
-XML Response
+<p>XML Response</p>
 
-GET http://api.knows.is/assets/$ARMH/sentiment/?start=20121231&amp;end=20130101
-Accept: application/xml, text/xml
+<p>GET <a href="http://api.knows.is/assets/%24ARMH/sentiment/?start=20121231&amp;end=20130101">http://api.knows.is/assets/$ARMH/sentiment/?start=20121231&amp;end=20130101</a>
+Accept: application/xml, text/xml</p>
 
-&lt;response&gt;
-    &lt;name&gt;ARM Holdings PLC&lt;/name&gt;
-    &lt;identifier&gt;$ARMH&lt;/identifier&gt;
-    &lt;startdate&gt;2012-12-31T00:00:00Z&lt;/startdate&gt;
-    &lt;enddate&gt;2013-01-01T00:00:00Z&lt;/enddate&gt;
-    &lt;datapoints&gt;
-      &lt;datapoint&gt;
-        &lt;date&gt;2013-01-01T00:00:00Z&lt;/date&gt;
-        &lt;sentiment&gt;
-          &lt;current&gt;50&lt;/current&gt;
-          &lt;previous&gt;12&lt;/previous&gt;
-          &lt;change&gt;38&lt;/change&gt;
-        &lt;/sentiment&gt;
-        &lt;volume&gt;
-          &lt;change&gt;106&lt;/change&gt;
-        &lt;/volume&gt;
-        &lt;demographics&gt;
-          &lt;genders&gt;
-            &lt;gender name="Male"&gt;64&lt;/gender&gt;
-            &lt;gender name="Female"&gt;8&lt;/gender&gt;
-            &lt;gender name="unspecified"&gt;28&lt;/gender&gt;
-          &lt;/genders&gt;
-          &lt;locations&gt;
-            &lt;location name="North America"&gt;23&lt;/location&gt;
-            &lt;location name="Europe"&gt;38&lt;/location&gt;
-            &lt;location name="South America"&gt;0&lt;/location&gt;
-            &lt;location name="Asia"&gt;22&lt;/location&gt;
-            &lt;location name="Africa"&gt;0&lt;/location&gt;
-            &lt;location name="Australasia"&gt;5&lt;/location&gt;
-            &lt;location name="unspecified"&gt;12&lt;/location&gt;
-          &lt;/locations&gt;
-        &lt;/demographics&gt;
-      &lt;/datapoint&gt;
-      &lt;datapoint&gt;
-        &lt;date&gt;2012-12-31T00:00:00Z&lt;/date&gt;
-        &lt;sentiment&gt;
-          &lt;current&gt;12&lt;/current&gt;
-          &lt;previous&gt;1&lt;/previous&gt;
-          &lt;change&gt;11&lt;/change&gt;
-        &lt;/sentiment&gt;
-        &lt;volume&gt;
-          &lt;change&gt;5&lt;/change&gt;
-        &lt;/volume&gt;
-        &lt;demographics&gt;
-          &lt;genders&gt;
-            &lt;gender name="Male"&gt;64&lt;/gender&gt;
-            &lt;gender name="Female"&gt;8&lt;/gender&gt;
-            &lt;gender name="unspecified"&gt;28&lt;/gender&gt;
-          &lt;/genders&gt;
-          &lt;locations&gt;
-            &lt;location name="North America"&gt;23&lt;/location&gt;
-            &lt;location name="Europe"&gt;38&lt;/location&gt;
-            &lt;location name="South America"&gt;0&lt;/location&gt;
-            &lt;location name="Asia"&gt;22&lt;/location&gt;
-            &lt;location name="Africa"&gt;0&lt;/location&gt;
-            &lt;location name="Australasia"&gt;5&lt;/location&gt;
-            &lt;location name="unspecified"&gt;12&lt;/location&gt;
-          &lt;/locations&gt;
-        &lt;/demographics&gt;
-      &lt;/datapoint&gt;
-    &lt;/datapoints&gt;
-  &lt;/response&gt;
-Plain Text Response
+<p>ARM Holdings PLC$ARMH2012-12-31T00:00:00Z2013-01-01T00:00:00Z2013-01-01T00:00:00Z50123810664828233802205122012-12-31T00:00:00Z1211156482823380220512
+Plain Text Response</p>
 
-GET http://api.knows.is/assets/$ARMH/sentiment/?start=20121231&amp;end=20130101
-Accept: text/plain
+<p>GET <a href="http://api.knows.is/assets/%24ARMH/sentiment/?start=20121231&amp;end=20130101">http://api.knows.is/assets/$ARMH/sentiment/?start=20121231&amp;end=20130101</a>
+Accept: text/plain</p>
 
-name: ARM Holdings PLC
+<p>name: ARM Holdings PLC
 identifier:$ARMH
 startdate:2012-12-31T00:00:00Z
-enddate:2013-01-01T00:00:00Z
+enddate:2013-01-01T00:00:00Z</p>
 
-date:2013-01-01T00:00:00Z
+<p>date:2013-01-01T00:00:00Z
 sentiment:current:-26
 sentiment:previous:-24
 sentiment:change:-2
@@ -508,9 +376,9 @@ gender:Male:64
 gender:Female:8
 gender:unspecified:28
 location:North America:28
-location:Europe:38
+location:Europe:38</p>
 
-date:2012-12-31T00:00:00Z
+<p>date:2012-12-31T00:00:00Z
 sentiment:current:-24
 sentiment:previous:-2
 sentiment:change:-22
@@ -519,17 +387,15 @@ gender:Male:45
 gender:Female:32
 gender:unspecified:23
 location:Asia:82
-location:South America:18
+location:South America:18</p>
 
+<p>Asset Sentiment Resource</p>
 
-Asset Sentiment Resource
+<p>The asset sentiment resource is made up of the following fields:</p>
 
-The asset sentiment resource is made up of the following fields:
+<p>Field</p>
 
-Field
-
-
-Description
+<p>Description
 name
 string
 display name for this asset
@@ -544,9 +410,9 @@ datetime
 the end date of the datapoint range returned
 datapoints
 list of datapoint resources
-datapoint
+datapoint</p>
 
-Datapoint Resource
+<p>Datapoint Resource
 {
   "date": "2013-01-01T00:00:00Z",
   "sentiment": {
@@ -573,12 +439,11 @@ Datapoint Resource
       "unspecified": 12
     }
   }
-}
+}</p>
 
+<p>The datapoint resource is made up of the following fields:</p>
 
-The datapoint resource is made up of the following fields:
-
-Field
+<p>Field
 Type
 Description
 date
@@ -592,20 +457,18 @@ volume resource
 volume
 demographics
 demographics resource
-demographics
+demographics</p>
 
-
-Sentiment Resource
+<p>Sentiment Resource
   "sentiment": {
     "current": 64,
     "previous": 58,
     "change": -6
-  }
+  }</p>
 
+<p>The sentiment resource is made up of the following fields:</p>
 
-The sentiment resource is made up of the following fields:
-
-Field
+<p>Field
 Type
 Description
 current
@@ -618,28 +481,24 @@ sentiment for the previous period
 Sentiment ranges from -50 (extremely bearish) to 50 (extremely bullish)
 change
 string
-absolute change between current and previous sentiment values
+absolute change between current and previous sentiment values</p>
 
-Volume Resource
+<p>Volume Resource</p>
 
-  "volume":{
+<p>"volume":{
     "change": -36
-  }
+  }</p>
 
+<p>The sentiment resource is made up of the following fields:</p>
 
-
-
-The sentiment resource is made up of the following fields:
-
-Field
+<p>Field
 Type
 Description
 change
 string
-percentage change from normal social conversation volume level
+percentage change from normal social conversation volume level</p>
 
-
-Demographics Resource
+<p>Demographics Resource
 "demographics": {
   "gender": {
     "Male": 64,
@@ -655,12 +514,11 @@ Demographics Resource
     "Australasia": 5,
     "unspecified": 12
   }
-}
+}</p>
 
+<p>The demographics resource is made up of the following fields:</p>
 
-The demographics resource is made up of the following fields:
-
-Field
+<p>Field
 Type
 Description
 gender
@@ -671,20 +529,20 @@ location resource
 percentage split of conversation by continent
 classification
 classification resource
-percentage split of conversation by user classification
+percentage split of conversation by user classification</p>
 
-For some users of social media platforms like Twitter it is not possible to accurately identify a gender (e.g. business accounts) or a location so in these cases we use “unspecified” as the returned value.
-GET /assets/{IDENTIFIER}/themes/
+<p>For some users of social media platforms like Twitter it is not possible to accurately identify a gender (e.g. business accounts) or a location so in these cases we use “unspecified” as the returned value.
+GET /assets/{IDENTIFIER}/themes/</p>
 
-The asset themes endpoint will return a list of themes for the asset based on the specified {identifier} value. 
+<p>The asset themes endpoint will return a list of themes for the asset based on the specified {identifier} value. </p>
 
-Example request/response
-JSON Response
+<p>Example request/response
+JSON Response</p>
 
-GET http://api.knows.is/assets/$ARMH/themes/
-Accept: application/json, text/javascript
+<p>GET <a href="http://api.knows.is/assets/%24ARMH/themes/">http://api.knows.is/assets/$ARMH/themes/</a>
+Accept: application/json, text/javascript</p>
 
-{
+<p>{
   "name": "ARM Holdings PLC",
   "identifier": "$ARMH",
   "startdate": "2013-01-01T00:00:00Z",
@@ -710,122 +568,86 @@ Accept: application/json, text/javascript
       ]
     }
   ]
-}
+}</p>
 
-XML Response
+<p>XML Response</p>
 
-GET http://api.knows.is/assets/$ARM/themes/
-Accept: application/xml, text/xml
+<p>GET <a href="http://api.knows.is/assets/%24ARM/themes/">http://api.knows.is/assets/$ARM/themes/</a>
+Accept: application/xml, text/xml</p>
 
-&lt;response&gt;
-    &lt;name&gt;ARM Holdings PLC&lt;/name&gt;
-    &lt;identifier&gt;$ARMH&lt;/identifier&gt;
-    &lt;startdate&gt;2013-01-01T00:00:00Z&lt;/startdate&gt;
-    &lt;enddate&gt;2013-01-01T00:00:00Z&lt;/enddate&gt;
-    &lt;dailythemes&gt;
-      &lt;dailytheme&gt;
-        &lt;date&gt;2013-01-01T00:00:00Z&lt;/date&gt;
-        &lt;themes&gt;
-          &lt;theme&gt;
-            &lt;title&gt;this is the title of the theme&lt;/title&gt;
-          &lt;/theme&gt;
-          &lt;theme&gt;
-            &lt;title&gt;this is another theme’s title&lt;/title&gt;
-          &lt;/theme&gt;
-        &lt;/themes&gt;
-      &lt;/dailytheme&gt;
-      &lt;date&gt;2013-01-02T00:00:00Z&lt;/date&gt;
-        &lt;themes&gt;
-          &lt;theme&gt;
-            &lt;title&gt;this is the title of the theme&lt;/title&gt;
-          &lt;/theme&gt;
-          &lt;theme&gt;
-            &lt;title&gt;this is another theme’s title&lt;/title&gt;
-          &lt;/theme&gt;
-        &lt;/themes&gt;
-      &lt;/dailytheme&gt;
-    &lt;/dailythemes&gt;
-&lt;/response&gt;
+<p>ARM Holdings PLC$ARMH2013-01-01T00:00:00Z2013-01-01T00:00:00Z2013-01-01T00:00:00Zthis is the title of the themethis is another theme’s title2013-01-02T00:00:00Zthis is the title of the themethis is another theme’s title</p>
 
-Plain Text Response
+<p>Plain Text Response</p>
 
-GET http://api.knows.is/assets/ARM.L/themes/
-Accept: text/plain
+<p>GET <a href="http://api.knows.is/assets/ARM.L/themes/">http://api.knows.is/assets/ARM.L/themes/</a>
+Accept: text/plain</p>
 
-name:ARM Holdings PLC
+<p>name:ARM Holdings PLC
 identifier:ARM.L
 startdate:2013-01-01T00:00:00Z
-enddate:2013-01-01T00:00:00Z
+enddate:2013-01-01T00:00:00Z</p>
 
-date:2013-01-01T00:00:00Z
+<p>date:2013-01-01T00:00:00Z
 theme:title:this is the title of the theme
-theme:title:this is another theme’s title
+theme:title:this is another theme’s title</p>
 
-date:2013-01-02T00:00:00Z
+<p>date:2013-01-02T00:00:00Z
 theme:title:this is the title of the theme
-theme:title:this is another theme’s title
+theme:title:this is another theme’s title</p>
 
-Theme List Resource
+<p>Theme List Resource</p>
 
-The theme list resource is made up of the following fields:
+<p>The theme list resource is made up of the following fields:</p>
 
-Field
+<p>Field
 Type
 Description
 themes
 list of theme resources
-list of themes for the requested asset
+list of themes for the requested asset</p>
 
-Theme Resource
+<p>Theme Resource</p>
 
-The theme resource is made up of the following fields:
+<p>The theme resource is made up of the following fields:</p>
 
-Field
+<p>Field
 Type
 Description
 title
 string
-Theme title
+Theme title</p>
 
+<p>Asset Identifiers
+We support several publicly available identifiers for retrieving details of the assets that we track. A full list of available identifiers can be found using the /assets/ endpoint to fetch a list of all assets.</p>
 
+<p>The following common ticker symbol formats are currently supported in requests for individual assets:</p>
 
-Asset Identifiers
-We support several publicly available identifiers for retrieving details of the assets that we track. A full list of available identifiers can be found using the /assets/ endpoint to fetch a list of all assets.
-
-The following common ticker symbol formats are currently supported in requests for individual assets:
-
-AAPL:US
+<p>AAPL:US
 AAPL.0
 NASDAQ:AAPL
-APPL
+APPL</p>
 
+<p>we also support the most common social media format, the StockTwits/Twitter cashtag:</p>
 
-we also support the most common social media format, the StockTwits/Twitter cashtag:
+<p>$GOOG</p>
 
-$GOOG
+<p>and International Securities Identification Numbers (ISIN): </p>
 
+<p>US0378331005</p>
 
-and International Securities Identification Numbers (ISIN): 
+<p>Macro and asset driver topics do not have a ticker symbol or ISIN code so you will need to refer to these by the Knowsis proprietary identifiers which can be found by calling the /assets/ endpoint. </p>
 
-US0378331005
+<p>Notes </p>
 
+<p>As identifiers may contain reserved characters, you should ensure that the identifier has been url encoded before being sent to the API.</p>
 
-Macro and asset driver topics do not have a ticker symbol or ISIN code so you will need to refer to these by the Knowsis proprietary identifiers which can be found by calling the /assets/ endpoint. 
+<p>Errors</p>
 
+<p>In the event of a problem with your request you will receive an error response</p>
 
+<p>As much as possible, Knowsis attempts to use the appropriate HTTP status codes to indicate the general class of problem. We will also provide a body to the request in the requested format with more details on the problem where available. You should handle errors in your application and present your end users with a more friendly response than the error messages provided here.</p>
 
-Notes 
-
-As identifiers may contain reserved characters, you should ensure that the identifier has been url encoded before being sent to the API.
-
-
-Errors
-
-In the event of a problem with your request you will receive an error response
-
-As much as possible, Knowsis attempts to use the appropriate HTTP status codes to indicate the general class of problem. We will also provide a body to the request in the requested format with more details on the problem where available. You should handle errors in your application and present your end users with a more friendly response than the error messages provided here.
-
-Error Message
+<p>Error Message
 Description
 400 (Bad Request)
 Any case where a parameter is invalid, or a required parameter is missing. This includes the case where OAuth parameters are not provided.
@@ -840,11 +662,11 @@ Attempting to use POST with a GET-only endpoint, or vice-versa.
 409 (Conflict)
 The request could not be completed as it is. Use the information included in the response to modify the request and retry.
 500 (Internal Server Error)
-Our servers are having problems. The request is probably valid but needs to be retried later.
+Our servers are having problems. The request is probably valid but needs to be retried later.</p>
 
-Example error response body
+<p>Example error response body</p>
 
-{
+<p>{
   "error": {
     "errorCode": "400",
     "errorMessages": [
@@ -853,11 +675,11 @@ Example error response body
       "Missing parameter OAuth Signature"
     ]
   }
-}
+}</p>
 
-The error resource is made up of the following fields:
+<p>The error resource is made up of the following fields:</p>
 
-Field
+<p>Field
 Type
 Description
 errorCode
@@ -865,28 +687,29 @@ string
 The relevant HTTP error code
 errorMessages
 list of strings
-List of human readable error messages
+List of human readable error messages</p>
 
-Additional details are provided in the errorMessages part of the error resource. It should be one of the following types of errors.
+<p>Additional details are provided in the errorMessages part of the error resource. It should be one of the following types of errors.</p>
 
-Error Message
+<p>Error Message
 Description
 Missing OAuth parameter
 The case where any of the required OAuth parameters are not provided. we will also specify the name of parameter that is missing.
 Invalid OAuth Consumer
 The provided OAuth Consumer key was not valid
 Signature verification failed
-The provided OAuth signature did not match that generated by the server.
-
-
-
-</code></pre>
+The provided OAuth signature did not match that generated by the server.</p>
       </section>
-      <footer>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+
     
+
   </body>
 </html>
