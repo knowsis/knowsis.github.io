@@ -51,14 +51,13 @@
 
 <p>The following parameters MUST appear in every request:</p>
 
-<ul>
-<li>oauth_consumer_key - The consumer key provided to you by Knowsis</li>
-<li>oauth_nonce - A random string of characters that differs from call to call (this helps to prevent replay attacks) be sure to make these characters legal (percent-encoded) </li>
-<li>oauth_timestamp - The number of seconds elapsed since midnight, 1 January 1970. Be sure this is within ten minutes of the real time</li>
-<li>oauth_signature_method - </li>
-<li>The method used to generate the signature. We currently only support HMAC-SHA1</li>
-<li>oauth_signature - You generate the signature by passing into a cryptographic function your consumer key, your shared secret, and an encoded version of the "base string" </li>
-</ul><p>The oauth_version parameter is optional; the value will be assumed to be 1.0 if it is not provided.
+<p><strong>oauth_consumer_key</strong> - The consumer key provided to you by Knowsis
+<strong>oauth_nonce</strong> - A random string of characters that differs from call to call (this helps to prevent replay attacks) be sure to make these characters legal (percent-encoded) 
+<strong>oauth_timestamp</strong> - The number of seconds elapsed since midnight, 1 January 1970. Be sure this is within ten minutes of the real time
+<strong>oauth_signature_method</strong> - The method used to generate the signature. We currently only support HMAC-SHA1
+<strong>oauth_signature</strong> - You generate the signature by passing into a cryptographic function your consumer key, your shared secret, and an encoded version of the "base string" </p>
+
+<p>The oauth_version parameter is optional; the value will be assumed to be 1.0 if it is not provided.
 </p>
 
 <h2>
@@ -76,8 +75,7 @@
 
 <p><code>Accept: text/plain</code></p>
 
-
-<h1>
+<hr><h1>
 <a name="api-endpoints" class="anchor" href="#api-endpoints"><span class="octicon octicon-link"></span></a>API Endpoints</h1>
 
 <p>Access to the Knowsis API is available through a RESTful interface</p>
@@ -91,28 +89,39 @@
 
 <p>There are also four asset list filter endpoints which will only return assets of the requested type:</p>
 
-<table></table><p>Endpoint
-Type
-Description
-equities
-list of asset resources
-A list of equities
-commodities
-list of asset resources
-A list of commodities
-indices
-list of asset resources
-A list of indices
-forex
-list of asset resources
-A list of forex pairs
-
-Example Request/Response</p>
+<table>
+<tr>
+<th>Endpoint</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>equities</td>
+<td>list of asset resources</td>
+<td>A list of equities</td>
+</tr>
+<tr>
+<td>commodities</td>
+<td>list of asset resources</td>
+<td>A list of commodities</td>
+</tr>
+<tr>
+<td>indices</td>
+<td>list of asset resources</td>
+<td>A list of indices</td>
+</tr>
+<tr>
+<td>forex</td>
+<td>list of asset resources</td>
+<td>A list of forex pairs</td>
+</tr>
+</table><p>Example Request/Response</p>
 
 <p>JSON Response</p>
 
-<p>GET <a href="http://api.knows.is/assets/">http://api.knows.is/assets/</a>
-Accept: application/json, text/javascript</p>
+<pre><code>GET http://api.knows.is/assets/
+Accept: application/json, text/javascript
+</code></pre>
 
 <pre><code>{
   "assets": [
@@ -155,38 +164,84 @@ Accept: application/json, text/javascript</p>
 
 <p>XML Response</p>
 
-<p>GET <a href="http://api.knows.is/assets/">http://api.knows.is/assets/</a>
-Accept: application/xml, text/xml</p>
+<pre><code>GET http://api.knows.is/assets/
+Accept: application/xml, text/xml
+</code></pre>
 
-<p>Anglo American PLCEquityAAL:LNBloombergAAL.LReutersGB00B1XZS820ISINARM Holdings PLCEquityARM:LNBloombergARMH:USBloomberg</p>
+<pre><code>&lt;response&gt;
+  &lt;assets&gt;
+    &lt;asset&gt;
+      &lt;name&gt;Anglo American PLC&lt;/name&gt;
+      &lt;type&gt;Equity&lt;/type&gt;
+      &lt;identifiers&gt;
+        &lt;identifier&gt;
+          &lt;value&gt;AAL:LN&lt;/value&gt;
+          &lt;type&gt;Bloomberg&lt;/type&gt;
+        &lt;/identifier&gt;
+        &lt;identifier&gt;
+          &lt;value&gt;AAL.L&lt;/value&gt;
+          &lt;type&gt;Reuters&lt;/type&gt;
+        &lt;/identifier&gt;
+        &lt;identifier&gt;
+          &lt;value&gt;GB00B1XZS820&lt;/value&gt;
+          &lt;type&gt;ISIN&lt;/type&gt;
+        &lt;/identifier&gt;
+      &lt;/identifiers&gt;
+    &lt;/asset&gt;
+    &lt;asset&gt;
+      &lt;name&gt;ARM Holdings PLC&lt;/name&gt;
+      &lt;type&gt;Equity&lt;/type&gt;
+      &lt;identifiers&gt;
+        &lt;identifier&gt;
+          &lt;value&gt;ARM:LN&lt;/value&gt;
+          &lt;type&gt;Bloomberg&lt;/type&gt;
+        &lt;/identifier&gt;
+        &lt;identifier&gt;
+          &lt;value&gt;ARMH:US&lt;/value&gt;
+          &lt;type&gt;Bloomberg&lt;/type&gt;
+        &lt;/identifier&gt;
+      &lt;/identifiers&gt;
+    &lt;/asset&gt;
+  &lt;/assets&gt;
+&lt;/response&gt;
+</code></pre>
 
 <p>Plain Text Response</p>
 
-<p>GET <a href="http://api.knows.is/assets/">http://api.knows.is/assets/</a>
-Accept: text/plain</p>
+<pre><code>GET http://api.knows.is/assets/
+Accept: text/plain
+</code></pre>
 
-<p>name: Anglo American PLC"
+<pre><code>name: Anglo American PLC"
 type: Equity
 id:Bloomberg:AAL:LN
 id:Reuters:AAL.L
-id:ISIN:GB00B1XZS820 </p>
+id:ISIN:GB00B1XZS820 
 
-<p>name: ARM Holdings PLC
+name: ARM Holdings PLC
 type: Equity
 id:BloomBerg|ARM:LN
-id:BloomBerg|ARMH:US</p>
+id:BloomBerg|ARMH:US
+</code></pre>
 
-<p>Asset List Resource
-The asset list resource is made up of the following fields:</p>
+<h3>
+<a name="asset-list-resource" class="anchor" href="#asset-list-resource"><span class="octicon octicon-link"></span></a>Asset List Resource</h3>
 
-<p>Field
-Type
-Description
-assets
-list of asset resources
-assets</p>
+<p>The asset list resource is made up of the following fields:</p>
 
-<p>GET /assets/{IDENTIFIER}/</p>
+<table>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>assets</td>
+<td>list of asset resources</td>
+<td>available assets</td>
+</tr>
+</table><h3>
+<a name="get-assetsidentifier" class="anchor" href="#get-assetsidentifier"><span class="octicon octicon-link"></span></a>GET /assets/{IDENTIFIER}/</h3>
 
 <p>The asset endpoint will return a single asset based on the specified {identifier} value. </p>
 
@@ -194,10 +249,11 @@ assets</p>
 
 <p>JSON Response</p>
 
-<p>GET <a href="http://api.knows.is/assets/ARM.L/">http://api.knows.is/assets/ARM.L/</a>
-Accept: application/json, text/javascript</p>
+<pre><code>GET http://api.knows.is/assets/ARM.L/
+Accept: application/json, text/javascript
+</code></pre>
 
-<p>{
+<pre><code>{
   "name": "ARM Holdings PLC",
   "identifiers": [
     {
@@ -209,47 +265,78 @@ Accept: application/json, text/javascript</p>
       "type": "Bloomberg"
     }
   ]
-}</p>
+}
+</code></pre>
 
 <p>XML Response</p>
 
-<p>GET <a href="http://api.knows.is/assets/ARM.L/">http://api.knows.is/assets/ARM.L/</a>
-Accept: application/xml, text/xml</p>
+<pre><code>GET http://api.knows.is/assets/ARM.L/
+Accept: application/xml, text/xml
+</code></pre>
 
-<p>ARM Holdings PLCARM:LNBloombergARMH:USBloomberg</p>
+<pre><code>&lt;response&gt;
+    &lt;name&gt;ARM Holdings PLC&lt;/name&gt;
+    &lt;identifiers&gt;
+      &lt;identifier&gt;
+        &lt;value&gt;ARM:LN&lt;/value&gt;
+        &lt;type&gt;Bloomberg&lt;/type&gt;
+      &lt;/identifier&gt;
+      &lt;identifier&gt;
+        &lt;value&gt;ARMH:US&lt;/value&gt;
+        &lt;type&gt;Bloomberg&lt;/type&gt;
+      &lt;/identifier&gt;
+    &lt;/identifiers&gt;
+&lt;/response&gt;
+</code></pre>
 
 <p>Plain Text Response</p>
 
-<p>GET <a href="http://api.knows.is/assets/ARM.L/">http://api.knows.is/assets/ARM.L/</a>
-Accept: text/plain</p>
+<pre><code>GET http://api.knows.is/assets/ARM.L/
+Accept: text/plain
+</code></pre>
 
-<p>name:ARM Holdings PLC
+<pre><code>name:ARM Holdings PLC
 identifier:BloomBerg|ARM:LN
-identifier:BloomBerg|ARMH:US</p>
+identifier:BloomBerg|ARMH:US
+</code></pre>
 
 <p>Asset Resource
 The asset resource is made up of the following fields:</p>
 
-<p>field
-Type
-description
-name
-string
-display name for this asset
-identifiers
-list of asset identifier resource
-list of asset identifier resource</p>
+<table>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>display name for this asset</td>
+</tr>
+<tr>
+<td>identifiers</td>
+<td>list of asset identifier resource</td>
+<td>list of asset identifier resource</td>
+</tr>
+</table><h3>
+<a name="asset-identifier-resource" class="anchor" href="#asset-identifier-resource"><span class="octicon octicon-link"></span></a>Asset Identifier Resource</h3>
 
-<p>Asset Identifier Resource</p>
+<p><code>Accept: application/json, text/javascript</code></p>
 
-<p>Accept: application/json, text/javascript
-{
+<pre><code>{
   "identifier": "$MMM", 
   "type": "Cashtag"
-}</p>
+}
+</code></pre>
 
-<p>Accept: application/xml, text/xml
-$MMM"Cashtag</p>
+<p>Accept: application/xml, text/xml</p>
+
+<pre><code>&lt;identifier&gt;
+  &lt;value&gt;$MMM&lt;/value&gt;
+  &lt;type&gt;"Cashtag&lt;/type&gt;
+&lt;/identifier&gt;
+</code></pre>
 
 <p>Accept: text/plain
 id:Cashtag|$MMM</p>
@@ -295,7 +382,7 @@ JSON Response</p>
 <p>GET <a href="http://api.knows.is/assets/%24ARMH/sentiment/?startdate=20121231&amp;enddate=20130101">http://api.knows.is/assets/$ARMH/sentiment/?startdate=20121231&amp;enddate=20130101</a>
 Accept: application/json, text/javascript</p>
 
-<p>{
+<pre><code>{
   "name": "ARM Holdings PLC",
   "identifier": "$ARMH",
   "startdate": "2012-12-31T00:00:00Z",
@@ -328,8 +415,8 @@ Accept: application/json, text/javascript</p>
         }
       }
     },
-    {<br>
-      "date": "2012-12-31T00:00:00Z",<br>
+    {     
+      "date": "2012-12-31T00:00:00Z",     
       "sentiment": {
         "current": -4,
         "previous": -40,
@@ -356,15 +443,79 @@ Accept: application/json, text/javascript</p>
       }
     }
   ]
-}</p>
+}
+</code></pre>
 
 <p>XML Response</p>
 
 <p>GET <a href="http://api.knows.is/assets/%24ARMH/sentiment/?start=20121231&amp;end=20130101">http://api.knows.is/assets/$ARMH/sentiment/?start=20121231&amp;end=20130101</a>
 Accept: application/xml, text/xml</p>
 
-<p>ARM Holdings PLC$ARMH2012-12-31T00:00:00Z2013-01-01T00:00:00Z2013-01-01T00:00:00Z50123810664828233802205122012-12-31T00:00:00Z1211156482823380220512
-Plain Text Response</p>
+<pre><code>&lt;response&gt;
+    &lt;name&gt;ARM Holdings PLC&lt;/name&gt;
+    &lt;identifier&gt;$ARMH&lt;/identifier&gt;
+    &lt;startdate&gt;2012-12-31T00:00:00Z&lt;/startdate&gt;
+    &lt;enddate&gt;2013-01-01T00:00:00Z&lt;/enddate&gt;
+    &lt;datapoints&gt;
+      &lt;datapoint&gt;
+        &lt;date&gt;2013-01-01T00:00:00Z&lt;/date&gt;
+        &lt;sentiment&gt;
+          &lt;current&gt;50&lt;/current&gt;
+          &lt;previous&gt;12&lt;/previous&gt;
+          &lt;change&gt;38&lt;/change&gt;
+        &lt;/sentiment&gt;
+        &lt;volume&gt;
+          &lt;change&gt;106&lt;/change&gt;
+        &lt;/volume&gt;
+        &lt;demographics&gt;
+          &lt;genders&gt;
+            &lt;gender name="Male"&gt;64&lt;/gender&gt;
+            &lt;gender name="Female"&gt;8&lt;/gender&gt;
+            &lt;gender name="unspecified"&gt;28&lt;/gender&gt;
+          &lt;/genders&gt;
+          &lt;locations&gt;
+            &lt;location name="North America"&gt;23&lt;/location&gt;
+            &lt;location name="Europe"&gt;38&lt;/location&gt;
+            &lt;location name="South America"&gt;0&lt;/location&gt;
+            &lt;location name="Asia"&gt;22&lt;/location&gt;
+            &lt;location name="Africa"&gt;0&lt;/location&gt;
+            &lt;location name="Australasia"&gt;5&lt;/location&gt;
+            &lt;location name="unspecified"&gt;12&lt;/location&gt;
+          &lt;/locations&gt;
+        &lt;/demographics&gt;
+      &lt;/datapoint&gt;
+      &lt;datapoint&gt;
+        &lt;date&gt;2012-12-31T00:00:00Z&lt;/date&gt;
+        &lt;sentiment&gt;
+          &lt;current&gt;12&lt;/current&gt;
+          &lt;previous&gt;1&lt;/previous&gt;
+          &lt;change&gt;11&lt;/change&gt;
+        &lt;/sentiment&gt;
+        &lt;volume&gt;
+          &lt;change&gt;5&lt;/change&gt;
+        &lt;/volume&gt;
+        &lt;demographics&gt;
+          &lt;genders&gt;
+            &lt;gender name="Male"&gt;64&lt;/gender&gt;
+            &lt;gender name="Female"&gt;8&lt;/gender&gt;
+            &lt;gender name="unspecified"&gt;28&lt;/gender&gt;
+          &lt;/genders&gt;
+          &lt;locations&gt;
+            &lt;location name="North America"&gt;23&lt;/location&gt;
+            &lt;location name="Europe"&gt;38&lt;/location&gt;
+            &lt;location name="South America"&gt;0&lt;/location&gt;
+            &lt;location name="Asia"&gt;22&lt;/location&gt;
+            &lt;location name="Africa"&gt;0&lt;/location&gt;
+            &lt;location name="Australasia"&gt;5&lt;/location&gt;
+            &lt;location name="unspecified"&gt;12&lt;/location&gt;
+          &lt;/locations&gt;
+        &lt;/demographics&gt;
+      &lt;/datapoint&gt;
+    &lt;/datapoints&gt;
+  &lt;/response&gt;
+</code></pre>
+
+<p>Plain Text Response</p>
 
 <pre><code>GET http://api.knows.is/assets/$ARMH/sentiment/?start=20121231&amp;end=20130101
 Accept: text/plain
