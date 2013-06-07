@@ -54,7 +54,7 @@ In order to specify your choice of response format use a standard HTTP Accept he
 
 Access to the Knowsis API is available through a RESTful interface
 
-The Knowsis API is available at http://api.knows.is/
+The Knowsis API is available for registered users at http://api.knowsis.com/. To register an account contact api@knowsis.com
 
 ## GET /assets/
 
@@ -75,7 +75,7 @@ There are also four asset list filter endpoints which will only return assets of
 
 
 
-Example Request/Response
+#### Example Request/Response
 
 JSON Response
 
@@ -209,7 +209,7 @@ The asset list resource is made up of the following fields:
 
 The asset endpoint will return a single asset based on the specified {identifier} value. 
 
-Example Request/Response
+#### Example Request/Response
 
 JSON Response
 
@@ -271,7 +271,7 @@ identifier:BloomBerg|ARMH:US
 ```
 
 
-Asset Resource
+### Asset Resource
 The asset resource is made up of the following fields:
 
 
@@ -282,6 +282,7 @@ The asset resource is made up of the following fields:
     <tr><td>identifiers</td><td>list of asset identifier resource</td><td>list of asset identifier resource</td></tr>
   </tbody>
 </table>
+
 
 ### Asset Identifier Resource
 
@@ -310,47 +311,45 @@ id:Cashtag|$MMM
 
 The asset identifier resource is up of the following fields:
 
-Field
-Type
-Description
-identifier
-string
-identifier value
-type
-string
-type of identifier
+<table>
+  <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td>identifier</td><td>string</td><td>identifier value</td></tr>
+    <tr><td>type</td><td>list of asset identifier resource</td><td>type of identifier</td></tr>
+  </tbody>
+</table>
 
 
-
-
-GET /assets/{IDENTIFIER}/sentiment/
+## GET /assets/{IDENTIFIER}/sentiment/
 
 The asset sentiment endpoint will return a list of sentiment resources. The default view is the current day’s sentiment data for a single asset based on the specified {identifier} value. The date which the data refers to is also returned in the request
 
 For API consumers that have access to historical sentiment data there are optional parameters to get sentiment for a specified date range
 
-Parameter
-Format
-Description
-startdate
-date - (YYYYMMDD)
-the first day in the requested range
-enddate
-date - (YYYYMMDD)
-the last day of the requested range
+
+<table>
+  <thead><tr><th>Parameter</th><th>Format</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td>startdate</td><td>date - (YYYYMMDD)</td><td>the first day in the requested range</td></tr>
+    <tr><td>enddate</td><td>date - (YYYYMMDD)</td><td>the last day in the requested range</td></tr>
+  </tbody>
+</table>
 
 The asset sentiment endpoint will adhere to the following behaviour:
 
-1) If no start date or end date is provided the data will be for the current day only.
-2) If there is no start date, the data will be returned for the end date only.
-3) If there is no end date, the data range will span from the start date provided up until the current day.
-4) If the start date is after the end date, the start date will be ignored and the API will adhere to the step 3.
+1. If no start date or end date is provided the data will be for the current day only.
+2. If there is no start date, the data will be returned for the end date only.
+3. If there is no end date, the data range will span from the start date provided up until the current day.
+4. If the start date is after the end date, the start date will be ignored and the API will adhere to the step 3.
 
-Example request/response
+#### Example request/response
+
 JSON Response
 
+```
 GET http://api.knows.is/assets/$ARMH/sentiment/?startdate=20121231&enddate=20130101
 Accept: application/json, text/javascript
+```
 
 ```
 {
@@ -419,8 +418,10 @@ Accept: application/json, text/javascript
 
 XML Response
 
+```
 GET http://api.knows.is/assets/$ARMH/sentiment/?start=20121231&end=20130101
 Accept: application/xml, text/xml
+```
 
 ```
 <response>
@@ -528,25 +529,17 @@ location:South America:18
 
 The asset sentiment resource is made up of the following fields:
 
-Field
+<table>
+  <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td>name</td><td>string</td><td>name for the asset</td></tr>
+    <tr><td>identifier</td><td>string</td><td>identifier used in the request</td></tr>
+    <tr><td>startdate</td><td>datetime</td><td>the start date of the datapoint range returned</td></tr>
+    <tr><td>enddate</td><td>datetime</td><td>the end date of the datapoint range returned</td></tr>
+    <tr><td>datapoints</td><td>list of datapoint resources</td><td>datapoint</td></tr>
+  </tbody>
+</table>
 
-
-Description
-name
-string
-display name for this asset
-identifier
-string
-identifier used in the request
-startdate
-datetime
-the start date of the datapoint range returned
-enddate
-datetime
-the end date of the datapoint range returned
-datapoints
-list of datapoint resources
-datapoint
 
 ### Datapoint Resource
 ```
@@ -582,24 +575,18 @@ datapoint
 
 The datapoint resource is made up of the following fields:
 
-Field
-Type
-Description
-date
-datetime
-date which datapoint relates to
-sentiment
-sentiment resource
-sentiment
-volume
-volume resource
-volume
-demographics
-demographics resource
-demographics
+<table>
+  <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td>date</td><td>datetime</td><td>date which datapoint relates to</td></tr>
+    <tr><td>sentiment</td><td>sentiment resource</td><td>sentiment value</td></tr>
+    <tr><td>volume</td><td>volume resource</td><td>volume value</td></tr>
+    <tr><td>demographics</td><td>demographics resource</td><td>demographics</td></tr>
+  </tbody>
+</table>
 
 
-Sentiment Resource
+### Sentiment Resource
 ```
   "sentiment": {
     "current": 64,
@@ -610,22 +597,18 @@ Sentiment Resource
 
 The sentiment resource is made up of the following fields:
 
-Field
-Type
-Description
-current
-integer
-sentiment for the current period
-Sentiment ranges from -50 (extremely bearish) to 50 (extremely bullish)
-previous
-integer
-sentiment for the previous period
-Sentiment ranges from -50 (extremely bearish) to 50 (extremely bullish)
-change
-string
-absolute change between current and previous sentiment values
+<table>
+  <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td>current</td><td>integer</td><td>sentiment for the current period</td></tr>
+    <tr><td>previous</td><td>integer</td><td>sentiment for the previous period</td></tr>
+    <tr><td>change</td><td>integer</td><td>absolute change between current and previous sentiment values</td></tr>
+  </tbody>
+</table>
 
-Volume Resource
+
+
+### Volume Resource
 
 ```
   "volume":{
@@ -635,17 +618,18 @@ Volume Resource
 
 
 
-The sentiment resource is made up of the following fields:
+The volume resource is made up of the following fields:
 
-Field
-Type
-Description
-change
-string
-percentage change from normal social conversation volume level
+<table>
+  <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td>change</td><td>integer</td><td>change from normal social conversation volume level</td></tr>    
+  </tbody>
+</table>
 
 
-Demographics Resource
+
+### Demographics Resource
 
 ```
 "demographics": {
@@ -668,29 +652,31 @@ Demographics Resource
 
 The demographics resource is made up of the following fields:
 
-Field
-Type
-Description
-gender
-gender resource
-percentage split of conversation by gender
-location
-location resource
-percentage split of conversation by continent
-classification
-classification resource
-percentage split of conversation by user classification
+<table>
+  <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td>gender</td><td>gender resource</td><td>percentage split of conversation by gender</td></tr>    
+    <tr><td>location</td><td>location resource</td><td>percentage split of conversation by location</td></tr>    
+    <tr><td>classification</td><td>classification resource</td><td>percentage split of conversation by user classification</td></tr>    
+  </tbody>
+</table>
 
+
+#### Note
 For some users of social media platforms like Twitter it is not possible to accurately identify a gender (e.g. business accounts) or a location so in these cases we use “unspecified” as the returned value.
-GET /assets/{IDENTIFIER}/themes/
+
+
+## GET /assets/{IDENTIFIER}/themes/
 
 The asset themes endpoint will return a list of themes for the asset based on the specified {identifier} value. 
 
-Example request/response
+#### Example request/response
 JSON Response
 
+```
 GET http://api.knows.is/assets/$ARMH/themes/
 Accept: application/json, text/javascript
+```
 
 ```
 {
@@ -724,8 +710,10 @@ Accept: application/json, text/javascript
 
 XML Response
 
+```
 GET http://api.knows.is/assets/$ARM/themes/
 Accept: application/xml, text/xml
+```
 
 ```
 <response>
@@ -761,9 +749,11 @@ Accept: application/xml, text/xml
 
 Plain Text Response
 
+```
 GET http://api.knows.is/assets/ARM.L/themes/
 Accept: text/plain
-
+```
+```
 name:ARM Holdings PLC
 identifier:ARM.L
 startdate:2013-01-01T00:00:00Z
@@ -776,62 +766,68 @@ theme:title:this is another theme’s title
 date:2013-01-02T00:00:00Z
 theme:title:this is the title of the theme
 theme:title:this is another theme’s title
+```
 
-Theme List Resource
+#### Theme List Resource
 
 The theme list resource is made up of the following fields:
 
-Field
-Type
-Description
-themes
-list of theme resources
-list of themes for the requested asset
+<table>
+  <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td>themes</td><td>list of theme resources</td><td>list of themes for the requested asset</td></tr>
+  </tbody>
+</table>
 
-Theme Resource
+
+### Theme Resource
 
 The theme resource is made up of the following fields:
 
-Field
-Type
-Description
-title
-string
-Theme title
+<table>
+  <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td>title</td><td>string</td><td>Theme title</td></tr>
+  </tbody>
+</table>
 
 
 
-Asset Identifiers
+## Asset Identifiers
+
 We support several publicly available identifiers for retrieving details of the assets that we track. A full list of available identifiers can be found using the /assets/ endpoint to fetch a list of all assets.
 
 The following common ticker symbol formats are currently supported in requests for individual assets:
 
+```
 AAPL:US
 AAPL.0
 NASDAQ:AAPL
 APPL
+```
 
+we also support the most common social media format, the Twitter cashtag:
 
-we also support the most common social media format, the StockTwits/Twitter cashtag:
-
+```
 $GOOG
-
+```
 
 and International Securities Identification Numbers (ISIN): 
 
+```
 US0378331005
-
+```
 
 Macro and asset driver topics do not have a ticker symbol or ISIN code so you will need to refer to these by the Knowsis proprietary identifiers which can be found by calling the /assets/ endpoint. 
 
 
 
-Notes 
+### Notes 
 
 As identifiers may contain reserved characters, you should ensure that the identifier has been url encoded before being sent to the API.
 
-
-Errors
+
+# Errors
 
 In the event of a problem with your request you will receive an error response
 
