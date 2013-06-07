@@ -1,33 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Knowsis API Documentation : " />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Knowsis API Documentation by knowsis</title>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Knowsis API Documentation</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
-
   <body>
+    <div class="wrapper">
+      <header>
+        <h1>Knowsis API Documentation</h1>
+        <p></p>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/knowsis">View on GitHub</a>
 
-          <h1 id="project_title">Knowsis API Documentation</h1>
-          <h2 id="project_tagline"></h2>
+        <p class="view"><a href="https://github.com/knowsis">View My GitHub Profile</a></p>
 
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+      </header>
+      <section>
         <h1>
+<a name="knowsis-api-documentation" class="anchor" href="#knowsis-api-documentation"><span class="octicon octicon-link"></span></a>Knowsis API Documentation</h1>
+
+<h1>
 <a name="what-is-the-knowsis-api" class="anchor" href="#what-is-the-knowsis-api"><span class="octicon octicon-link"></span></a>What is the Knowsis API?</h1>
 
 <p>The Knowsis API allows developers to add Knowsis content to their website and applications. Knowsis sentiment data is derived from 1000s of online sources and is generated through our own proprietary machine learning algorithms. </p>
@@ -80,7 +79,7 @@
 
 <p>Access to the Knowsis API is available through a RESTful interface</p>
 
-<p>The Knowsis API is available at <a href="http://api.knows.is/">http://api.knows.is/</a></p>
+<p>The Knowsis API is available for registered users at <a href="http://api.knowsis.com/">http://api.knowsis.com/</a>. To register an account contact <a href="mailto:api@knowsis.com">api@knowsis.com</a></p>
 
 <h2>
 <a name="get-assets" class="anchor" href="#get-assets"><span class="octicon octicon-link"></span></a>GET /assets/</h2>
@@ -115,7 +114,8 @@
 <td>list of asset resources</td>
 <td>A list of forex pairs</td>
 </tr>
-</table><p>Example Request/Response</p>
+</table><h4>
+<a name="example-requestresponse" class="anchor" href="#example-requestresponse"><span class="octicon octicon-link"></span></a>Example Request/Response</h4>
 
 <p>JSON Response</p>
 
@@ -245,7 +245,8 @@ id:BloomBerg|ARMH:US
 
 <p>The asset endpoint will return a single asset based on the specified {identifier} value. </p>
 
-<p>Example Request/Response</p>
+<h4>
+<a name="example-requestresponse-1" class="anchor" href="#example-requestresponse-1"><span class="octicon octicon-link"></span></a>Example Request/Response</h4>
 
 <p>JSON Response</p>
 
@@ -300,8 +301,10 @@ identifier:BloomBerg|ARM:LN
 identifier:BloomBerg|ARMH:US
 </code></pre>
 
-<p>Asset Resource
-The asset resource is made up of the following fields:</p>
+<h3>
+<a name="asset-resource" class="anchor" href="#asset-resource"><span class="octicon octicon-link"></span></a>Asset Resource</h3>
+
+<p>The asset resource is made up of the following fields:</p>
 
 <table>
 <tr>
@@ -343,44 +346,60 @@ id:Cashtag|$MMM</p>
 
 <p>The asset identifier resource is up of the following fields:</p>
 
-<p>Field
-Type
-Description
-identifier
-string
-identifier value
-type
-string
-type of identifier</p>
-
-<p>GET /assets/{IDENTIFIER}/sentiment/</p>
+<table>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>identifier</td>
+<td>string</td>
+<td>identifier value</td>
+</tr>
+<tr>
+<td>type</td>
+<td>list of asset identifier resource</td>
+<td>type of identifier</td>
+</tr>
+</table><h2>
+<a name="get-assetsidentifiersentiment" class="anchor" href="#get-assetsidentifiersentiment"><span class="octicon octicon-link"></span></a>GET /assets/{IDENTIFIER}/sentiment/</h2>
 
 <p>The asset sentiment endpoint will return a list of sentiment resources. The default view is the current day’s sentiment data for a single asset based on the specified {identifier} value. The date which the data refers to is also returned in the request</p>
 
 <p>For API consumers that have access to historical sentiment data there are optional parameters to get sentiment for a specified date range</p>
 
-<p>Parameter
-Format
-Description
-startdate
-date - (YYYYMMDD)
-the first day in the requested range
-enddate
-date - (YYYYMMDD)
-the last day of the requested range</p>
+<table>
+<tr>
+<th>Parameter</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>startdate</td>
+<td>date - (YYYYMMDD)</td>
+<td>the first day in the requested range</td>
+</tr>
+<tr>
+<td>enddate</td>
+<td>date - (YYYYMMDD)</td>
+<td>the last day in the requested range</td>
+</tr>
+</table><p>The asset sentiment endpoint will adhere to the following behaviour:</p>
 
-<p>The asset sentiment endpoint will adhere to the following behaviour:</p>
+<ol>
+<li>If no start date or end date is provided the data will be for the current day only.</li>
+<li>If there is no start date, the data will be returned for the end date only.</li>
+<li>If there is no end date, the data range will span from the start date provided up until the current day.</li>
+<li>If the start date is after the end date, the start date will be ignored and the API will adhere to the step 3.</li>
+</ol><h4>
+<a name="example-requestresponse-2" class="anchor" href="#example-requestresponse-2"><span class="octicon octicon-link"></span></a>Example request/response</h4>
 
-<p>1) If no start date or end date is provided the data will be for the current day only.
-2) If there is no start date, the data will be returned for the end date only.
-3) If there is no end date, the data range will span from the start date provided up until the current day.
-4) If the start date is after the end date, the start date will be ignored and the API will adhere to the step 3.</p>
+<p>JSON Response</p>
 
-<p>Example request/response
-JSON Response</p>
-
-<p>GET <a href="http://api.knows.is/assets/%24ARMH/sentiment/?startdate=20121231&amp;enddate=20130101">http://api.knows.is/assets/$ARMH/sentiment/?startdate=20121231&amp;enddate=20130101</a>
-Accept: application/json, text/javascript</p>
+<pre><code>GET http://api.knows.is/assets/$ARMH/sentiment/?startdate=20121231&amp;enddate=20130101
+Accept: application/json, text/javascript
+</code></pre>
 
 <pre><code>{
   "name": "ARM Holdings PLC",
@@ -448,8 +467,9 @@ Accept: application/json, text/javascript</p>
 
 <p>XML Response</p>
 
-<p>GET <a href="http://api.knows.is/assets/%24ARMH/sentiment/?start=20121231&amp;end=20130101">http://api.knows.is/assets/$ARMH/sentiment/?start=20121231&amp;end=20130101</a>
-Accept: application/xml, text/xml</p>
+<pre><code>GET http://api.knows.is/assets/$ARMH/sentiment/?start=20121231&amp;end=20130101
+Accept: application/xml, text/xml
+</code></pre>
 
 <pre><code>&lt;response&gt;
     &lt;name&gt;ARM Holdings PLC&lt;/name&gt;
@@ -554,26 +574,38 @@ location:South America:18
 
 <p>The asset sentiment resource is made up of the following fields:</p>
 
-<p>Field</p>
-
-<p>Description
-name
-string
-display name for this asset
-identifier
-string
-identifier used in the request
-startdate
-datetime
-the start date of the datapoint range returned
-enddate
-datetime
-the end date of the datapoint range returned
-datapoints
-list of datapoint resources
-datapoint</p>
-
-<h3>
+<table>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>name for the asset</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td>string</td>
+<td>identifier used in the request</td>
+</tr>
+<tr>
+<td>startdate</td>
+<td>datetime</td>
+<td>the start date of the datapoint range returned</td>
+</tr>
+<tr>
+<td>enddate</td>
+<td>datetime</td>
+<td>the end date of the datapoint range returned</td>
+</tr>
+<tr>
+<td>datapoints</td>
+<td>list of datapoint resources</td>
+<td>datapoint</td>
+</tr>
+</table><h3>
 <a name="datapoint-resource" class="anchor" href="#datapoint-resource"><span class="octicon octicon-link"></span></a>Datapoint Resource</h3>
 
 <pre><code>{
@@ -607,23 +639,34 @@ datapoint</p>
 
 <p>The datapoint resource is made up of the following fields:</p>
 
-<p>Field
-Type
-Description
-date
-datetime
-date which datapoint relates to
-sentiment
-sentiment resource
-sentiment
-volume
-volume resource
-volume
-demographics
-demographics resource
-demographics</p>
-
-<p>Sentiment Resource</p>
+<table>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>date</td>
+<td>datetime</td>
+<td>date which datapoint relates to</td>
+</tr>
+<tr>
+<td>sentiment</td>
+<td>sentiment resource</td>
+<td>sentiment value</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>volume resource</td>
+<td>volume value</td>
+</tr>
+<tr>
+<td>demographics</td>
+<td>demographics resource</td>
+<td>demographics</td>
+</tr>
+</table><h3>
+<a name="sentiment-resource" class="anchor" href="#sentiment-resource"><span class="octicon octicon-link"></span></a>Sentiment Resource</h3>
 
 <pre><code>  "sentiment": {
     "current": 64,
@@ -634,38 +677,50 @@ demographics</p>
 
 <p>The sentiment resource is made up of the following fields:</p>
 
-<p>Field
-Type
-Description
-current
-integer
-sentiment for the current period
-Sentiment ranges from -50 (extremely bearish) to 50 (extremely bullish)
-previous
-integer
-sentiment for the previous period
-Sentiment ranges from -50 (extremely bearish) to 50 (extremely bullish)
-change
-string
-absolute change between current and previous sentiment values</p>
-
-<p>Volume Resource</p>
+<table>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>current</td>
+<td>integer</td>
+<td>sentiment for the current period</td>
+</tr>
+<tr>
+<td>previous</td>
+<td>integer</td>
+<td>sentiment for the previous period</td>
+</tr>
+<tr>
+<td>change</td>
+<td>integer</td>
+<td>absolute change between current and previous sentiment values</td>
+</tr>
+</table><h3>
+<a name="volume-resource" class="anchor" href="#volume-resource"><span class="octicon octicon-link"></span></a>Volume Resource</h3>
 
 <pre><code>  "volume":{
     "change": -36
   }
 </code></pre>
 
-<p>The sentiment resource is made up of the following fields:</p>
+<p>The volume resource is made up of the following fields:</p>
 
-<p>Field
-Type
-Description
-change
-string
-percentage change from normal social conversation volume level</p>
-
-<p>Demographics Resource</p>
+<table>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>change</td>
+<td>integer</td>
+<td>change from normal social conversation volume level</td>
+</tr>
+</table><h3>
+<a name="demographics-resource" class="anchor" href="#demographics-resource"><span class="octicon octicon-link"></span></a>Demographics Resource</h3>
 
 <pre><code>"demographics": {
   "gender": {
@@ -687,29 +742,45 @@ percentage change from normal social conversation volume level</p>
 
 <p>The demographics resource is made up of the following fields:</p>
 
-<p>Field
-Type
-Description
-gender
-gender resource
-percentage split of conversation by gender
-location
-location resource
-percentage split of conversation by continent
-classification
-classification resource
-percentage split of conversation by user classification</p>
+<table>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>gender</td>
+<td>gender resource</td>
+<td>percentage split of conversation by gender</td>
+</tr>
+<tr>
+<td>location</td>
+<td>location resource</td>
+<td>percentage split of conversation by location</td>
+</tr>
+<tr>
+<td>classification</td>
+<td>classification resource</td>
+<td>percentage split of conversation by user classification</td>
+</tr>
+</table><h4>
+<a name="note" class="anchor" href="#note"><span class="octicon octicon-link"></span></a>Note</h4>
 
-<p>For some users of social media platforms like Twitter it is not possible to accurately identify a gender (e.g. business accounts) or a location so in these cases we use “unspecified” as the returned value.
-GET /assets/{IDENTIFIER}/themes/</p>
+<p>For some users of social media platforms like Twitter it is not possible to accurately identify a gender (e.g. business accounts) or a location so in these cases we use “unspecified” as the returned value.</p>
+
+<h2>
+<a name="get-assetsidentifierthemes" class="anchor" href="#get-assetsidentifierthemes"><span class="octicon octicon-link"></span></a>GET /assets/{IDENTIFIER}/themes/</h2>
 
 <p>The asset themes endpoint will return a list of themes for the asset based on the specified {identifier} value. </p>
 
-<p>Example request/response
-JSON Response</p>
+<h4>
+<a name="example-requestresponse-3" class="anchor" href="#example-requestresponse-3"><span class="octicon octicon-link"></span></a>Example request/response</h4>
 
-<p>GET <a href="http://api.knows.is/assets/%24ARMH/themes/">http://api.knows.is/assets/$ARMH/themes/</a>
-Accept: application/json, text/javascript</p>
+<p>JSON Response</p>
+
+<pre><code>GET http://api.knows.is/assets/$ARMH/themes/
+Accept: application/json, text/javascript
+</code></pre>
 
 <pre><code>{
   "name": "ARM Holdings PLC",
@@ -742,8 +813,9 @@ Accept: application/json, text/javascript</p>
 
 <p>XML Response</p>
 
-<p>GET <a href="http://api.knows.is/assets/%24ARM/themes/">http://api.knows.is/assets/$ARM/themes/</a>
-Accept: application/xml, text/xml</p>
+<pre><code>GET http://api.knows.is/assets/$ARM/themes/
+Accept: application/xml, text/xml
+</code></pre>
 
 <pre><code>&lt;response&gt;
     &lt;name&gt;ARM Holdings PLC&lt;/name&gt;
@@ -778,94 +850,129 @@ Accept: application/xml, text/xml</p>
 
 <p>Plain Text Response</p>
 
-<p>GET <a href="http://api.knows.is/assets/ARM.L/themes/">http://api.knows.is/assets/ARM.L/themes/</a>
-Accept: text/plain</p>
+<pre><code>GET http://api.knows.is/assets/ARM.L/themes/
+Accept: text/plain
+</code></pre>
 
-<p>name:ARM Holdings PLC
+<pre><code>name:ARM Holdings PLC
 identifier:ARM.L
 startdate:2013-01-01T00:00:00Z
-enddate:2013-01-01T00:00:00Z</p>
+enddate:2013-01-01T00:00:00Z
 
-<p>date:2013-01-01T00:00:00Z
+date:2013-01-01T00:00:00Z
 theme:title:this is the title of the theme
-theme:title:this is another theme’s title</p>
+theme:title:this is another theme’s title
 
-<p>date:2013-01-02T00:00:00Z
+date:2013-01-02T00:00:00Z
 theme:title:this is the title of the theme
-theme:title:this is another theme’s title</p>
+theme:title:this is another theme’s title
+</code></pre>
 
-<p>Theme List Resource</p>
+<h4>
+<a name="theme-list-resource" class="anchor" href="#theme-list-resource"><span class="octicon octicon-link"></span></a>Theme List Resource</h4>
 
 <p>The theme list resource is made up of the following fields:</p>
 
-<p>Field
-Type
-Description
-themes
-list of theme resources
-list of themes for the requested asset</p>
-
-<p>Theme Resource</p>
+<table>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>themes</td>
+<td>list of theme resources</td>
+<td>list of themes for the requested asset</td>
+</tr>
+</table><h3>
+<a name="theme-resource" class="anchor" href="#theme-resource"><span class="octicon octicon-link"></span></a>Theme Resource</h3>
 
 <p>The theme resource is made up of the following fields:</p>
 
-<p>Field
-Type
-Description
-title
-string
-Theme title</p>
+<table>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>Theme title</td>
+</tr>
+</table><hr><h2>
+<a name="asset-identifiers" class="anchor" href="#asset-identifiers"><span class="octicon octicon-link"></span></a>Asset Identifiers</h2>
 
-<p>Asset Identifiers
-We support several publicly available identifiers for retrieving details of the assets that we track. A full list of available identifiers can be found using the /assets/ endpoint to fetch a list of all assets.</p>
+<p>We support several publicly available identifiers for retrieving details of the assets that we track. A full list of available identifiers can be found using the /assets/ endpoint to fetch a list of all assets.</p>
 
 <p>The following common ticker symbol formats are currently supported in requests for individual assets:</p>
 
-<p>AAPL:US
+<pre><code>AAPL:US
 AAPL.0
 NASDAQ:AAPL
-APPL</p>
+APPL
+</code></pre>
 
-<p>we also support the most common social media format, the StockTwits/Twitter cashtag:</p>
+<p>we also support the most common social media format, the Twitter cashtag:</p>
 
-<p>$GOOG</p>
+<pre><code>$GOOG
+</code></pre>
 
 <p>and International Securities Identification Numbers (ISIN): </p>
 
-<p>US0378331005</p>
+<pre><code>US0378331005
+</code></pre>
 
 <p>Macro and asset driver topics do not have a ticker symbol or ISIN code so you will need to refer to these by the Knowsis proprietary identifiers which can be found by calling the /assets/ endpoint. </p>
 
-<p>Notes </p>
+<h3>
+<a name="notes" class="anchor" href="#notes"><span class="octicon octicon-link"></span></a>Notes</h3>
 
 <p>As identifiers may contain reserved characters, you should ensure that the identifier has been url encoded before being sent to the API.</p>
 
-<p>Errors</p>
+<hr><h1>
+<a name="errors" class="anchor" href="#errors"><span class="octicon octicon-link"></span></a>Errors</h1>
 
 <p>In the event of a problem with your request you will receive an error response</p>
 
 <p>As much as possible, Knowsis attempts to use the appropriate HTTP status codes to indicate the general class of problem. We will also provide a body to the request in the requested format with more details on the problem where available. You should handle errors in your application and present your end users with a more friendly response than the error messages provided here.</p>
 
-<p>Error Message
-Description
-400 (Bad Request)
-Any case where a parameter is invalid, or a required parameter is missing. This includes the case where OAuth parameters are not provided.
-401 (Unauthorized)
-The OAuth signature was provided but was invalid.
-403 (Forbidden)
-Access to the requested resource was refused by the server. Your api account does not have permissions to access the request resource.
-404 (Not Found)
-The requested resource does not exist.
-405 (Method Not Allowed)
-Attempting to use POST with a GET-only endpoint, or vice-versa.
-409 (Conflict)
-The request could not be completed as it is. Use the information included in the response to modify the request and retry.
-500 (Internal Server Error)
-Our servers are having problems. The request is probably valid but needs to be retried later.</p>
+<table>
+<tr>
+<th>Error Message</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>400 (Bad Request)</td>
+<td>Any case where a parameter is invalid, or a required parameter is missing. This includes the case where OAuth parameters are not provided.</td>
+</tr>
+<tr>
+<td>401 (Unauthorized)</td>
+<td>The OAuth signature was provided but was invalid.</td>
+</tr>
+<tr>
+<td>403 (Forbidden)</td>
+<td>Access to the requested resource was refused by the server. Your api account does not have permissions to access the request resource.</td>
+</tr>
+<tr>
+<td>404 (Not Found)</td>
+<td>The requested resource does not exist.</td>
+</tr>
+<tr>
+<td>405 (Method Not Allowed)</td>
+<td>Attempting to use POST with a GET-only endpoint, or vice-versa.</td>
+</tr>
+<tr>
+<td>409 (Conflict)</td>
+<td>The request could not be completed as it is. Use the information included in the response to modify the request and retry.</td>
+</tr>
+<tr>
+<td>500 (Internal Server Error)</td>
+<td>Our servers are having problems. The request is probably valid but needs to be retried later.</td>
+</tr>
+</table><p>Example error response body</p>
 
-<p>Example error response body</p>
-
-<p>{
+<pre><code>{
   "error": {
     "errorCode": "400",
     "errorMessages": [
@@ -874,41 +981,53 @@ Our servers are having problems. The request is probably valid but needs to be r
       "Missing parameter OAuth Signature"
     ]
   }
-}</p>
+}
+</code></pre>
 
 <p>The error resource is made up of the following fields:</p>
 
-<p>Field
-Type
-Description
-errorCode
-string
-The relevant HTTP error code
-errorMessages
-list of strings
-List of human readable error messages</p>
+<table>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>errorCode</td>
+<td>integer</td>
+<td>The relevant HTTP error code</td>
+</tr>
+<tr>
+<td>errorMessages</td>
+<td>list of strings</td>
+<td>List of human readable error messages</td>
+</tr>
+</table><p>Additional details are provided in the errorMessages part of the error resource. It should be one of the following types of errors.</p>
 
-<p>Additional details are provided in the errorMessages part of the error resource. It should be one of the following types of errors.</p>
-
-<p>Error Message
-Description
-Missing OAuth parameter
-The case where any of the required OAuth parameters are not provided. we will also specify the name of parameter that is missing.
-Invalid OAuth Consumer
-The provided OAuth Consumer key was not valid
-Signature verification failed
-The provided OAuth signature did not match that generated by the server.</p>
+<table>
+<tr>
+<th>Error Message</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>Missing OAuth parameter</td>
+<td>The case where any of the required OAuth parameters are not provided. we will also specify the name of parameter that is missing.</td>
+</tr>
+<tr>
+<td>Invalid OAuth Consumer</td>
+<td>The provided OAuth Consumer key was not valid</td>
+</tr>
+<tr>
+<td>Signature verification failed</td>
+<td>The provided OAuth signature did not match that generated by the server.</td>
+</tr>
+</table>
       </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      <footer>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
-
+    <script src="javascripts/scale.fix.js"></script>
     
-
   </body>
 </html>
