@@ -1,10 +1,40 @@
-Knowsis API Documentation
-=================
+**Table of Contents**
+
+- [What is the Knowsis API?](#what-is-the-knowsis-api)
+  - [Technical Overview](#technical-overview)
+	- [Authentication](#authentication)
+	- [Response Formats](#response-formats)
+- [API Endpoints](#api-endpoints)
+	- [GET /assets/](#get-assets)
+			- [Example Request/Response](#example-requestresponse)
+		- [Asset List Resource](#asset-list-resource)
+		- [GET /assets/{IDENTIFIER}/](#get-assetsidentifier)
+			- [Example Request/Response](#example-requestresponse-1)
+		- [Asset Resource](#asset-resource)
+		- [Asset Identifier Resource](#asset-identifier-resource)
+	- [GET /assets/{IDENTIFIER}/sentiment/](#get-assetsidentifiersentiment)
+			- [Example request/response](#example-requestresponse-2)
+		- [Asset Sentiment Resource](#asset-sentiment-resource)
+		- [Datapoint Resource](#datapoint-resource)
+		- [Sentiment Resource](#sentiment-resource)
+		- [Volume Resource](#volume-resource)
+		- [Demographics Resource](#demographics-resource)
+			- [Note](#note)
+	- [GET /assets/{IDENTIFIER}/themes/](#get-assetsidentifierthemes)
+			- [Example request/response](#example-requestresponse-3)
+			- [Theme List Resource](#theme-list-resource)
+		- [Theme Resource](#theme-resource)
+	- [Asset Identifiers](#asset-identifiers)
+		- [Notes](#notes)
+- [Errors](#errors)
+
+
+***
 
 
 # What is the Knowsis API?
 
-The Knowsis API allows developers to add Knowsis content to their website and applications. Knowsis sentiment data is derived from 1000s of online sources and is generated through our own proprietary machine learning algorithms. 
+The Knowsis API allows developers to add Knowsis analytics to their website and applications. Knowsis sentiment data is derived from 1000s of online sources and is generated through our own proprietary machine learning algorithms. 
 
 We make the sentiment of 100s of publicly traded assets (equities, commodities, indices, forex pairs) and non tradable assets (macro drivers, pre IPO companies etc) available, as well as providing social demographics of the type of people that are discussing each asset.
 
