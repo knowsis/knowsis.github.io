@@ -5,27 +5,26 @@
 	- [Authentication](#authentication)
 	- [Response Formats](#response-formats)
 - [API Endpoints](#api-endpoints)
-	- [GET /assets/](#get-assets)
-			- [Example Request/Response](#example-requestresponse)
+	- [List Assets](#get-assets)
+		- [Example Request/Response](#example-requestresponse)
 		- [Asset List Resource](#asset-list-resource)
-		- [GET /assets/{IDENTIFIER}/](#get-assetsidentifier)
-			- [Example Request/Response](#example-requestresponse-1)
+	- [Asset Details](#get-assetsidentifier)
+		- [Example Request/Response](#example-requestresponse-1)
 		- [Asset Resource](#asset-resource)
 		- [Asset Identifier Resource](#asset-identifier-resource)
-	- [GET /assets/{IDENTIFIER}/sentiment/](#get-assetsidentifiersentiment)
-			- [Example request/response](#example-requestresponse-2)
+	- [Asset Sentiment](#get-assetsidentifiersentiment)
+		- [Example request/response](#example-requestresponse-2)
 		- [Asset Sentiment Resource](#asset-sentiment-resource)
 		- [Datapoint Resource](#datapoint-resource)
 		- [Sentiment Resource](#sentiment-resource)
 		- [Volume Resource](#volume-resource)
 		- [Demographics Resource](#demographics-resource)
-			- [Note](#note)
-	- [GET /assets/{IDENTIFIER}/themes/](#get-assetsidentifierthemes)
-			- [Example request/response](#example-requestresponse-3)
-			- [Theme List Resource](#theme-list-resource)
+	- [Asset Themes](#get-assetsidentifierthemes)
+		- [Example request/response](#example-requestresponse-3)
+		- [Theme List Resource](#theme-list-resource)
 		- [Theme Resource](#theme-resource)
-	- [Asset Identifiers](#asset-identifiers)
-		- [Notes](#notes)
+- [Asset Identifiers](#asset-identifiers)
+	- [Notes](#notes)
 - [Errors](#errors)
 
 
@@ -86,7 +85,7 @@ Access to the Knowsis API is available through a RESTful interface
 
 The Knowsis API is available for registered users at http://api.knowsis.com/. To register an account contact api@knowsis.com
 
-## GET /assets/
+## List Assets
 
 The assets endpoint will return an asset list resource containing all available asset resources.
 
@@ -105,7 +104,7 @@ There are also four asset list filter endpoints which will only return assets of
 
 
 
-#### Example Request/Response
+### Example Request/Response
 
 JSON Response
 
@@ -235,11 +234,11 @@ The asset list resource is made up of the following fields:
 </table>
 
 
-### GET /assets/{IDENTIFIER}/
+## Asset Details
 
 The asset endpoint will return a single asset based on the specified {identifier} value. 
 
-#### Example Request/Response
+### Example Request/Response
 
 JSON Response
 
@@ -350,7 +349,7 @@ The asset identifier resource is up of the following fields:
 </table>
 
 
-## GET /assets/{IDENTIFIER}/sentiment/
+## Asset Sentiment
 
 The asset sentiment endpoint will return a list of sentiment resources. The default view is the current day’s sentiment data for a single asset based on the specified {identifier} value. The date which the data refers to is also returned in the request
 
@@ -696,11 +695,11 @@ The demographics resource is made up of the following fields:
 For some users of social media platforms like Twitter it is not possible to accurately identify a gender (e.g. business accounts) or a location so in these cases we use “unspecified” as the returned value.
 
 
-## GET /assets/{IDENTIFIER}/themes/
+## Asset Themes
 
 The asset themes endpoint will return a list of themes for the asset based on the specified {identifier} value. 
 
-#### Example request/response
+### Example request/response
 JSON Response
 
 ```
@@ -798,7 +797,7 @@ theme:title:this is the title of the theme
 theme:title:this is another theme’s title
 ```
 
-#### Theme List Resource
+### Theme List Resource
 
 The theme list resource is made up of the following fields:
 
@@ -825,7 +824,7 @@ The theme resource is made up of the following fields:
 
 ***
 
-## Asset Identifiers
+# Asset Identifiers
 
 We support several publicly available identifiers for retrieving details of the assets that we track. A full list of available identifiers can be found using the /assets/ endpoint to fetch a list of all assets.
 
