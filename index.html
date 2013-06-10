@@ -1,32 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Knowsis API Documentation : " />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Knowsis API Documentation by knowsis</title>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Knowsis API Documentation</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
-
   <body>
+    <div class="wrapper">
+      <header>
+        <h1>Knowsis API Documentation</h1>
+        <p></p>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/knowsis">View on GitHub</a>
 
-          <h1 id="project_title">Knowsis API Documentation</h1>
-          <h2 id="project_tagline"></h2>
+        <p class="view"><a href="https://github.com/knowsis">View My GitHub Profile</a></p>
 
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+      </header>
+      <section>
         <p><strong>Table of Contents</strong></p>
 
 <ul>
@@ -47,7 +43,7 @@
 <a href="#get-assets">List Assets</a>
 
 <ul>
-<li><a href="#example-requestresponse">Example Request/Response</a></li>
+<li><a href="#example-requestresponse">Example request/response</a></li>
 <li><a href="#asset-list-resource">Asset List Resource</a></li>
 </ul>
 </li>
@@ -55,7 +51,7 @@
 <a href="#get-assetsidentifier">Asset Details</a>
 
 <ul>
-<li><a href="#example-requestresponse-1">Example Request/Response</a></li>
+<li><a href="#example-requestresponse-1">Example request/response</a></li>
 <li><a href="#asset-resource">Asset Resource</a></li>
 <li><a href="#asset-identifier-resource">Asset Identifier Resource</a></li>
 </ul>
@@ -83,13 +79,7 @@
 </li>
 </ul>
 </li>
-<li>
-<a href="#asset-identifiers">Asset Identifiers</a>
-
-<ul>
-<li><a href="#notes">Notes</a></li>
-</ul>
-</li>
+<li><a href="#asset-identifiers">Asset Identifiers</a></li>
 <li><a href="#errors">Errors</a></li>
 </ul><hr><h1>
 <a name="what-is-the-knowsis-api" class="anchor" href="#what-is-the-knowsis-api"><span class="octicon octicon-link"></span></a>What is the Knowsis API?</h1>
@@ -115,13 +105,18 @@
 
 <p>The following parameters MUST appear in every request:</p>
 
-<p><strong>oauth_consumer_key</strong> - The consumer key provided to you by Knowsis
-<strong>oauth_nonce</strong> - A random string of characters that differs from call to call (this helps to prevent replay attacks) be sure to make these characters legal (percent-encoded) 
-<strong>oauth_timestamp</strong> - The number of seconds elapsed since midnight, 1 January 1970. Be sure this is within ten minutes of the real time
-<strong>oauth_signature_method</strong> - The method used to generate the signature. We currently only support HMAC-SHA1
-<strong>oauth_signature</strong> - You generate the signature by passing into a cryptographic function your consumer key, your shared secret, and an encoded version of the "base string" </p>
-
-<p>The oauth_version parameter is optional; the value will be assumed to be 1.0 if it is not provided.
+<ul>
+<li>
+<strong>oauth_consumer_key</strong> - The consumer key provided to you by Knowsis</li>
+<li>
+<strong>oauth_nonce</strong> - A random string of characters that differs from call to call (this helps to prevent replay attacks) be sure to make these characters legal (percent-encoded)</li>
+<li>
+<strong>oauth_timestamp</strong> - The number of seconds elapsed since midnight, 1 January 1970. Be sure this is within ten minutes of the real time</li>
+<li>
+<strong>oauth_signature_method</strong> - The method used to generate the signature. We currently only support HMAC-SHA1</li>
+<li>
+<strong>oauth_signature</strong> - You generate the signature by passing into a cryptographic function your consumer key, your shared secret, and an encoded version of the "base string"</li>
+</ul><p>The oauth_version parameter is optional; the value will be assumed to be 1.0 if it is not provided.
 </p>
 
 <h2>
@@ -149,7 +144,10 @@
 <h2>
 <a name="list-assets" class="anchor" href="#list-assets"><span class="octicon octicon-link"></span></a>List Assets</h2>
 
-<p>The assets endpoint will return an asset list resource containing all available asset resources.</p>
+<p>The list assets endpoint will return an asset list resource containing all asset resources available to your accoun.</p>
+
+<pre><code>GET /assets/
+</code></pre>
 
 <p>There are also four asset list filter endpoints which will only return assets of the requested type:</p>
 
@@ -179,8 +177,17 @@
 <td>list of asset resources</td>
 <td>A list of forex pairs</td>
 </tr>
-</table><h3>
-<a name="example-requestresponse" class="anchor" href="#example-requestresponse"><span class="octicon octicon-link"></span></a>Example Request/Response</h3>
+</table><pre><code>GET /equities/
+
+GET /commodities/
+
+GET /indices/
+
+GET /forex/
+</code></pre>
+
+<h3>
+<a name="example-requestresponse" class="anchor" href="#example-requestresponse"><span class="octicon octicon-link"></span></a>Example request/response</h3>
 
 <p>JSON Response</p>
 
@@ -310,8 +317,11 @@ id:BloomBerg|ARMH:US
 
 <p>The asset endpoint will return a single asset based on the specified {identifier} value. </p>
 
+<pre><code>GET /assets/{identifier}/
+</code></pre>
+
 <h3>
-<a name="example-requestresponse-1" class="anchor" href="#example-requestresponse-1"><span class="octicon octicon-link"></span></a>Example Request/Response</h3>
+<a name="example-requestresponse-1" class="anchor" href="#example-requestresponse-1"><span class="octicon octicon-link"></span></a>Example request/response</h3>
 
 <p>JSON Response</p>
 
@@ -432,7 +442,10 @@ id:Cashtag|$MMM</p>
 
 <p>The asset sentiment endpoint will return a list of sentiment resources. The default view is the current day’s sentiment data for a single asset based on the specified {identifier} value. The date which the data refers to is also returned in the request</p>
 
-<p>For API consumers that have access to historical sentiment data there are optional parameters to get sentiment for a specified date range</p>
+<pre><code>GET /assets/{identifier}/sentiment/
+</code></pre>
+
+<p>For API consumers that have licensed our historical sentiment data there are optional parameters to get sentiment for a specified date range</p>
 
 <table>
 <tr>
@@ -838,6 +851,9 @@ location:South America:18
 
 <p>The asset themes endpoint will return a list of themes for the asset based on the specified {identifier} value. </p>
 
+<pre><code>GET /assets/{identifier}/themes/
+</code></pre>
+
 <h3>
 <a name="example-requestresponse-3" class="anchor" href="#example-requestresponse-3"><span class="octicon octicon-link"></span></a>Example request/response</h3>
 
@@ -857,7 +873,7 @@ Accept: application/json, text/javascript
       "date": "2013-01-01T00:00:00Z",
       "themes": [
         {
-          "title": "the title of the theme"
+          "title": "The title of the theme"
         }
       ]
     },
@@ -865,10 +881,10 @@ Accept: application/json, text/javascript
       "date": "2013-01-02T00:00:00Z",
       "themes": [
         {
-          "title": "the title of the first theme"
+          "title": "The title of the first theme"
         },
         {
-          "title": "the title of the next theme"
+          "title": "The title of the next theme"
         }
       ]
     }
@@ -1088,15 +1104,11 @@ APPL
 </tr>
 </table>
       </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      <footer>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
-
+    <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -1107,7 +1119,6 @@ APPL
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
-
 
   </body>
 </html>
