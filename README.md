@@ -6,10 +6,10 @@
 	- [Response Formats](#response-formats)
 - [API Endpoints](#api-endpoints)
 	- [List Assets](#get-assets)
-		- [Example Request/Response](#example-requestresponse)
+		- [Example request/response](#example-requestresponse)
 		- [Asset List Resource](#asset-list-resource)
 	- [Asset Details](#get-assetsidentifier)
-		- [Example Request/Response](#example-requestresponse-1)
+		- [Example request/response](#example-requestresponse-1)
 		- [Asset Resource](#asset-resource)
 		- [Asset Identifier Resource](#asset-identifier-resource)
 	- [Asset Sentiment](#get-assetsidentifiersentiment)
@@ -24,7 +24,6 @@
 		- [Theme List Resource](#theme-list-resource)
 		- [Theme Resource](#theme-resource)
 - [Asset Identifiers](#asset-identifiers)
-	- [Notes](#notes)
 - [Errors](#errors)
 
 
@@ -51,11 +50,11 @@ We use OAuth for authentication. As all resources are protected, you must sign e
 
 The following parameters MUST appear in every request:
 
-**oauth_consumer_key** - The consumer key provided to you by Knowsis
-**oauth_nonce** - A random string of characters that differs from call to call (this helps to prevent replay attacks) be sure to make these characters legal (percent-encoded) 
-**oauth_timestamp** - The number of seconds elapsed since midnight, 1 January 1970. Be sure this is within ten minutes of the real time
-**oauth_signature_method** - The method used to generate the signature. We currently only support HMAC-SHA1
-**oauth_signature** - You generate the signature by passing into a cryptographic function your consumer key, your shared secret, and an encoded version of the "base string" 
++ **oauth_consumer_key** - The consumer key provided to you by Knowsis
++ **oauth_nonce** - A random string of characters that differs from call to call (this helps to prevent replay attacks) be sure to make these characters legal (percent-encoded)
++ **oauth_timestamp** - The number of seconds elapsed since midnight, 1 January 1970. Be sure this is within ten minutes of the real time
++ **oauth_signature_method** - The method used to generate the signature. We currently only support HMAC-SHA1
++ **oauth_signature** - You generate the signature by passing into a cryptographic function your consumer key, your shared secret, and an encoded version of the "base string"
 
 
 The oauth_version parameter is optional; the value will be assumed to be 1.0 if it is not provided.
@@ -87,7 +86,12 @@ The Knowsis API is available for registered users at http://api.knowsis.com/. To
 
 ## List Assets
 
-The assets endpoint will return an asset list resource containing all available asset resources.
+
+The list assets endpoint will return an asset list resource containing all asset resources available to your accoun.
+
+```
+GET /assets/
+```
 
 There are also four asset list filter endpoints which will only return assets of the requested type:
 
@@ -102,9 +106,19 @@ There are also four asset list filter endpoints which will only return assets of
   </tbody>
 </table>
 
+```
+GET /equities/
 
-
-### Example Request/Response
+GET /commodities/
+
+GET /indices/
+
+GET /forex/
+```
+
+
+
+### Example request/response
 
 JSON Response
 
@@ -223,8 +237,8 @@ id:BloomBerg|ARMH:US
 
 
 ###Asset List Resource
-The asset list resource is made up of the following fields:
 
+The asset list resource is made up of the following fields:
 
 <table>
   <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
@@ -238,7 +252,11 @@ The asset list resource is made up of the following fields:
 
 The asset endpoint will return a single asset based on the specified {identifier} value. 
 
-### Example Request/Response
+```
+GET /assets/{identifier}/
+```
+
+### Example request/response
 
 JSON Response
 
@@ -353,8 +371,11 @@ The asset identifier resource is up of the following fields:
 
 The asset sentiment endpoint will return a list of sentiment resources. The default view is the current day’s sentiment data for a single asset based on the specified {identifier} value. The date which the data refers to is also returned in the request
 
-For API consumers that have access to historical sentiment data there are optional parameters to get sentiment for a specified date range
+```
+GET /assets/{identifier}/sentiment/
+```
 
+For API consumers that have licensed our historical sentiment data there are optional parameters to get sentiment for a specified date range
 
 <table>
   <thead><tr><th>Parameter</th><th>Format</th><th>Description</th></tr></thead>
@@ -699,6 +720,10 @@ For some users of social media platforms like Twitter it is not possible to accu
 
 The asset themes endpoint will return a list of themes for the asset based on the specified {identifier} value. 
 
+```
+GET /assets/{identifier}/themes/
+```
+
 ### Example request/response
 JSON Response
 
@@ -718,7 +743,7 @@ Accept: application/json, text/javascript
       "date": "2013-01-01T00:00:00Z",
       "themes": [
         {
-          "title": "the title of the theme"
+          "title": "The title of the theme"
         }
       ]
     },
@@ -726,10 +751,10 @@ Accept: application/json, text/javascript
       "date": "2013-01-02T00:00:00Z",
       "themes": [
         {
-          "title": "the title of the first theme"
+          "title": "The title of the first theme"
         },
         {
-          "title": "the title of the next theme"
+          "title": "The title of the next theme"
         }
       ]
     }
@@ -821,7 +846,7 @@ The theme resource is made up of the following fields:
 </table>
 
 
-
+
 ***
 
 # Asset Identifiers
