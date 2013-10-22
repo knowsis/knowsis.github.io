@@ -45,6 +45,7 @@
 <ul>
 <li><a href="#example-requestresponse">Example request/response</a></li>
 <li><a href="#asset-list-resource">Asset List Resource</a></li>
+<li><a href="#metadata-resource">Metadata Resource</a></li>
 </ul>
 </li>
 <li>
@@ -128,11 +129,12 @@
 
 <p>In order to specify your choice of response format use a standard HTTP Accept header.</p>
 
-<p><code>Accept: application/json, text/javascript</code></p>
+<pre><code>Accept: application/json, text/javascript
 
-<p><code>Accept: application/xml, text/xml</code></p>
+Accept: application/xml, text/xml
 
-<p><code>Accept: text/plain</code></p>
+Accept: text/plain
+</code></pre>
 
 <hr><h1>
 <a name="api-endpoints" class="anchor" href="#api-endpoints"><span class="octicon octicon-link"></span></a>API Endpoints</h1>
@@ -144,7 +146,7 @@
 <h2>
 <a name="list-assets" class="anchor" href="#list-assets"><span class="octicon octicon-link"></span></a>List Assets</h2>
 
-<p>The list assets endpoint will return an asset list resource containing all asset resources available to your accoun.</p>
+<p>The list assets endpoint will return an asset list resource containing all asset resources available to your account. Asset lists can be paged to return upto 100 assets at a time</p>
 
 <pre><code>GET /assets/
 </code></pre>
@@ -152,11 +154,12 @@
 <p>There are also four asset list filter endpoints which will only return assets of the requested type:</p>
 
 <table>
-<tr>
+<thead><tr>
 <th>Endpoint</th>
 <th>Type</th>
 <th>Description</th>
-</tr>
+</tr></thead>
+<tbody>
 <tr>
 <td>equities</td>
 <td>list of asset resources</td>
@@ -177,6 +180,7 @@
 <td>list of asset resources</td>
 <td>A list of forex pairs</td>
 </tr>
+</tbody>
 </table><pre><code>GET /equities/
 
 GET /commodities/
@@ -196,6 +200,12 @@ Accept: application/json, text/javascript
 </code></pre>
 
 <pre><code>{
+  "meta":{
+    "page":1,
+    "pagesize": 100,
+    "items": 2,
+    "total_items": 2
+  },
   "assets": [
     {
       "name": "Anglo American PLC",
@@ -241,6 +251,12 @@ Accept: application/xml, text/xml
 </code></pre>
 
 <pre><code>&lt;response&gt;
+  &lt;meta&gt;
+    &lt;page&gt;1&lt;/page&gt;
+    &lt;pagesize&gt;100&lt;/pagesize&gt;
+    &lt;items&gt;2&lt;/items&gt;
+    &lt;total_items&gt;1&lt;/total_items&gt;
+  &lt;/meta&gt;
   &lt;assets&gt;
     &lt;asset&gt;
       &lt;name&gt;Anglo American PLC&lt;/name&gt;
@@ -284,7 +300,12 @@ Accept: application/xml, text/xml
 Accept: text/plain
 </code></pre>
 
-<pre><code>name: Anglo American PLC"
+<pre><code>meta:page:1
+meta:pagesize:100
+meta:items:2
+meta:total_items:2
+
+name: Anglo American PLC"
 type: Equity
 id:Bloomberg:AAL:LN
 id:Reuters:AAL.L
@@ -302,16 +323,56 @@ id:BloomBerg|ARMH:US
 <p>The asset list resource is made up of the following fields:</p>
 
 <table>
-<tr>
+<thead><tr>
 <th>Field</th>
 <th>Type</th>
 <th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>meta</td>
+<td>metadata resource</td>
+<td>paging metadata</td>
 </tr>
 <tr>
 <td>assets</td>
 <td>list of asset resources</td>
 <td>available assets</td>
 </tr>
+</tbody>
+</table><h3>
+<a name="metadata-resource" class="anchor" href="#metadata-resource"><span class="octicon octicon-link"></span></a>Metadata Resource</h3>
+
+<p>The metadata resource is made up of the following fields:</p>
+
+<table>
+<thead><tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>page</td>
+<td>int</td>
+<td>requested/current page</td>
+</tr>
+<tr>
+<td>pagesize</td>
+<td>int</td>
+<td>requested page size</td>
+</tr>
+<tr>
+<td>items</td>
+<td>int</td>
+<td>number of items in the current page</td>
+</tr>
+<tr>
+<td>total_items</td>
+<td>int</td>
+<td>total items available</td>
+</tr>
+</tbody>
 </table><h2>
 <a name="asset-details" class="anchor" href="#asset-details"><span class="octicon octicon-link"></span></a>Asset Details</h2>
 
@@ -382,11 +443,12 @@ identifier:BloomBerg|ARMH:US
 <p>The asset resource is made up of the following fields:</p>
 
 <table>
-<tr>
+<thead><tr>
 <th>Field</th>
 <th>Type</th>
 <th>Description</th>
-</tr>
+</tr></thead>
+<tbody>
 <tr>
 <td>name</td>
 <td>string</td>
@@ -397,6 +459,7 @@ identifier:BloomBerg|ARMH:US
 <td>list of asset identifier resource</td>
 <td>list of asset identifier resource</td>
 </tr>
+</tbody>
 </table><h3>
 <a name="asset-identifier-resource" class="anchor" href="#asset-identifier-resource"><span class="octicon octicon-link"></span></a>Asset Identifier Resource</h3>
 
@@ -422,11 +485,12 @@ id:Cashtag|$MMM</p>
 <p>The asset identifier resource is up of the following fields:</p>
 
 <table>
-<tr>
+<thead><tr>
 <th>Field</th>
 <th>Type</th>
 <th>Description</th>
-</tr>
+</tr></thead>
+<tbody>
 <tr>
 <td>identifier</td>
 <td>string</td>
@@ -437,6 +501,7 @@ id:Cashtag|$MMM</p>
 <td>list of asset identifier resource</td>
 <td>type of identifier</td>
 </tr>
+</tbody>
 </table><h2>
 <a name="asset-sentiment" class="anchor" href="#asset-sentiment"><span class="octicon octicon-link"></span></a>Asset Sentiment</h2>
 
@@ -448,11 +513,12 @@ id:Cashtag|$MMM</p>
 <p>For API consumers that have licensed our historical sentiment data there are optional parameters to get sentiment for a specified date range</p>
 
 <table>
-<tr>
+<thead><tr>
 <th>Parameter</th>
 <th>Format</th>
 <th>Description</th>
-</tr>
+</tr></thead>
+<tbody>
 <tr>
 <td>startdate</td>
 <td>date - (YYYYMMDD)</td>
@@ -463,6 +529,7 @@ id:Cashtag|$MMM</p>
 <td>date - (YYYYMMDD)</td>
 <td>the last day in the requested range</td>
 </tr>
+</tbody>
 </table><p>The asset sentiment endpoint will adhere to the following behaviour:</p>
 
 <ol>
@@ -653,11 +720,12 @@ location:South America:18
 <p>The asset sentiment resource is made up of the following fields:</p>
 
 <table>
-<tr>
+<thead><tr>
 <th>Field</th>
 <th>Type</th>
 <th>Description</th>
-</tr>
+</tr></thead>
+<tbody>
 <tr>
 <td>name</td>
 <td>string</td>
@@ -683,6 +751,7 @@ location:South America:18
 <td>list of datapoint resources</td>
 <td>datapoint</td>
 </tr>
+</tbody>
 </table><h3>
 <a name="datapoint-resource" class="anchor" href="#datapoint-resource"><span class="octicon octicon-link"></span></a>Datapoint Resource</h3>
 
@@ -718,11 +787,12 @@ location:South America:18
 <p>The datapoint resource is made up of the following fields:</p>
 
 <table>
-<tr>
+<thead><tr>
 <th>Field</th>
 <th>Type</th>
 <th>Description</th>
-</tr>
+</tr></thead>
+<tbody>
 <tr>
 <td>date</td>
 <td>datetime</td>
@@ -743,6 +813,7 @@ location:South America:18
 <td>demographics resource</td>
 <td>demographics</td>
 </tr>
+</tbody>
 </table><h3>
 <a name="sentiment-resource" class="anchor" href="#sentiment-resource"><span class="octicon octicon-link"></span></a>Sentiment Resource</h3>
 
@@ -756,11 +827,12 @@ location:South America:18
 <p>The sentiment resource is made up of the following fields:</p>
 
 <table>
-<tr>
+<thead><tr>
 <th>Field</th>
 <th>Type</th>
 <th>Description</th>
-</tr>
+</tr></thead>
+<tbody>
 <tr>
 <td>current</td>
 <td>integer</td>
@@ -776,6 +848,7 @@ location:South America:18
 <td>integer</td>
 <td>absolute change between current and previous sentiment values</td>
 </tr>
+</tbody>
 </table><h3>
 <a name="volume-resource" class="anchor" href="#volume-resource"><span class="octicon octicon-link"></span></a>Volume Resource</h3>
 
@@ -787,16 +860,16 @@ location:South America:18
 <p>The volume resource is made up of the following fields:</p>
 
 <table>
-<tr>
+<thead><tr>
 <th>Field</th>
 <th>Type</th>
 <th>Description</th>
-</tr>
-<tr>
+</tr></thead>
+<tbody><tr>
 <td>change</td>
 <td>integer</td>
 <td>change from normal social conversation volume level</td>
-</tr>
+</tr></tbody>
 </table><h3>
 <a name="demographics-resource" class="anchor" href="#demographics-resource"><span class="octicon octicon-link"></span></a>Demographics Resource</h3>
 
@@ -821,11 +894,12 @@ location:South America:18
 <p>The demographics resource is made up of the following fields:</p>
 
 <table>
-<tr>
+<thead><tr>
 <th>Field</th>
 <th>Type</th>
 <th>Description</th>
-</tr>
+</tr></thead>
+<tbody>
 <tr>
 <td>gender</td>
 <td>gender resource</td>
@@ -841,6 +915,7 @@ location:South America:18
 <td>classification resource</td>
 <td>percentage split of conversation by user classification</td>
 </tr>
+</tbody>
 </table><h4>
 <a name="note" class="anchor" href="#note"><span class="octicon octicon-link"></span></a>Note</h4>
 
@@ -955,32 +1030,32 @@ theme:title:this is another theme’s title
 <p>The theme list resource is made up of the following fields:</p>
 
 <table>
-<tr>
+<thead><tr>
 <th>Field</th>
 <th>Type</th>
 <th>Description</th>
-</tr>
-<tr>
+</tr></thead>
+<tbody><tr>
 <td>themes</td>
 <td>list of theme resources</td>
 <td>list of themes for the requested asset</td>
-</tr>
+</tr></tbody>
 </table><h3>
 <a name="theme-resource" class="anchor" href="#theme-resource"><span class="octicon octicon-link"></span></a>Theme Resource</h3>
 
 <p>The theme resource is made up of the following fields:</p>
 
 <table>
-<tr>
+<thead><tr>
 <th>Field</th>
 <th>Type</th>
 <th>Description</th>
-</tr>
-<tr>
+</tr></thead>
+<tbody><tr>
 <td>title</td>
 <td>string</td>
 <td>Theme title</td>
-</tr>
+</tr></tbody>
 </table><hr><h1>
 <a name="asset-identifiers" class="anchor" href="#asset-identifiers"><span class="octicon octicon-link"></span></a>Asset Identifiers</h1>
 
@@ -1019,10 +1094,11 @@ APPL
 <p>As much as possible, Knowsis attempts to use the appropriate HTTP status codes to indicate the general class of problem. We will also provide a body to the request in the requested format with more details on the problem where available. You should handle errors in your application and present your end users with a more friendly response than the error messages provided here.</p>
 
 <table>
-<tr>
+<thead><tr>
 <th>Error Message</th>
 <th>Description</th>
-</tr>
+</tr></thead>
+<tbody>
 <tr>
 <td>400 (Bad Request)</td>
 <td>Any case where a parameter is invalid, or a required parameter is missing. This includes the case where OAuth parameters are not provided.</td>
@@ -1051,6 +1127,7 @@ APPL
 <td>500 (Internal Server Error)</td>
 <td>Our servers are having problems. The request is probably valid but needs to be retried later.</td>
 </tr>
+</tbody>
 </table><p>Example error response body</p>
 
 <pre><code>{
@@ -1068,11 +1145,12 @@ APPL
 <p>The error resource is made up of the following fields:</p>
 
 <table>
-<tr>
+<thead><tr>
 <th>Field</th>
 <th>Type</th>
 <th>Description</th>
-</tr>
+</tr></thead>
+<tbody>
 <tr>
 <td>errorCode</td>
 <td>integer</td>
@@ -1083,13 +1161,15 @@ APPL
 <td>list of strings</td>
 <td>List of human readable error messages</td>
 </tr>
+</tbody>
 </table><p>Additional details are provided in the errorMessages part of the error resource. It should be one of the following types of errors.</p>
 
 <table>
-<tr>
+<thead><tr>
 <th>Error Message</th>
 <th>Description</th>
-</tr>
+</tr></thead>
+<tbody>
 <tr>
 <td>Missing OAuth parameter</td>
 <td>The case where any of the required OAuth parameters are not provided. we will also specify the name of parameter that is missing.</td>
@@ -1102,6 +1182,7 @@ APPL
 <td>Signature verification failed</td>
 <td>The provided OAuth signature did not match that generated by the server.</td>
 </tr>
+</tbody>
 </table>
       </section>
       <footer>
