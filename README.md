@@ -68,11 +68,13 @@ The default format is JSON
 In order to specify your choice of response format use a standard HTTP Accept header.
 
 
-```Accept: application/json, text/javascript```
+```
+Accept: application/json, text/javascript
 
-```Accept: application/xml, text/xml```
+Accept: application/xml, text/xml
 
-```Accept: text/plain```
+Accept: text/plain
+```
 
 
 ***
