@@ -87,7 +87,7 @@ The Knowsis API is available for registered users at http://api.knowsis.com/. To
 ## List Assets
 
 
-The list assets endpoint will return an asset list resource containing all asset resources available to your accoun.
+The list assets endpoint will return an asset list resource containing all asset resources available to your account. Asset lists can be paged to return upto 100 assets at a time
 
 ```
 GET /assets/
@@ -129,6 +129,12 @@ Accept: application/json, text/javascript
 
 ```
 {
+  "meta":{
+    "page":1,
+    "pagesize": 100,
+    "items": 2,
+    "total_items": 2
+  },
   "assets": [
     {
       "name": "Anglo American PLC",
@@ -176,6 +182,12 @@ Accept: application/xml, text/xml
 
 ```
 <response>
+  <meta>
+    <page>1</page>
+    <pagesize>100</pagesize>
+    <items>2</items>
+    <total_items>1</total_items>
+  </meta>
   <assets>
     <asset>
       <name>Anglo American PLC</name>
@@ -222,6 +234,11 @@ Accept: text/plain
 ```
 
 ```
+meta:page:1
+meta:pagesize:100
+meta:items:2
+meta:total_items:2
+
 name: Anglo American PLC"
 type: Equity
 id:Bloomberg:AAL:LN
@@ -243,7 +260,22 @@ The asset list resource is made up of the following fields:
 <table>
   <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
   <tbody>
+    <tr><td>meta</td><td>metadata resource</td><td>paging metadata</td></tr>
     <tr><td>assets</td><td>list of asset resources</td><td>available assets</td></tr>
+  </tbody>
+</table>
+
+
+### Metadata Resource
+The metadata resource is made up of the following fields:
+
+<table>
+  <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td>page</td><td>int</td><td>requested/current page</td></tr>
+    <tr><td>pagesize</td><td>int</td><td>requested page size</td></tr>
+    <tr><td>items</td><td>int</td><td>number of items in the current page</td></tr>
+    <tr><td>total_items</td><td>int</td><td>total items available</td></tr>
   </tbody>
 </table>
 
