@@ -8,6 +8,7 @@
 	- [List Assets](#get-assets)
 		- [Example request/response](#example-requestresponse)
 		- [Asset List Resource](#asset-list-resource)
+		- [Metadata Resource](#metadata-resource)
 	- [Asset Details](#get-assetsidentifier)
 		- [Example request/response](#example-requestresponse-1)
 		- [Asset Resource](#asset-resource)
