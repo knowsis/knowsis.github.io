@@ -41,7 +41,7 @@ We make the sentiment of 100s of publicly traded assets (equities, commodities, 
 
 ## Technical Overview
 
-Our API is accessible via HTTP, is RESTful, and offers both JSON, XML and plain text response formats (find the schemas below). All data responses are UTF-8 encoded.
+Our API is accessible via HTTPS, is RESTful, and offers both JSON, XML and plain text response formats (find the schemas below). All data responses are UTF-8 encoded.
 
 We presently offer sentiment data for the current day.
 
@@ -87,7 +87,7 @@ Accept: text/plain
 
 Access to the Knowsis API is available through a RESTful interface
 
-The Knowsis API is available for registered users at http://api.knowsis.com/. To register an account contact api@knowsis.com
+The Knowsis API is available for registered users at https://api.knowsis.com/. To register an account contact api@knowsis.com
 
 ## List Assets
 
@@ -128,7 +128,7 @@ GET /forex/
 JSON Response
 
 ```
-GET http://api.knows.is/assets/
+GET https://api.knows.is/assets/
 Accept: application/json, text/javascript
 ```
 
@@ -181,7 +181,7 @@ Accept: application/json, text/javascript
 XML Response
 
 ```
-GET http://api.knows.is/assets/
+GET https://api.knows.is/assets/
 Accept: application/xml, text/xml
 ```
 
@@ -234,7 +234,7 @@ Accept: application/xml, text/xml
 Plain Text Response
 
 ```
-GET http://api.knows.is/assets/
+GET https://api.knows.is/assets/
 Accept: text/plain
 ```
 
@@ -298,7 +298,7 @@ GET /assets/{identifier}/
 JSON Response
 
 ```
-GET http://api.knows.is/assets/ARM.L/
+GET https://api.knows.is/assets/ARM.L/
 Accept: application/json, text/javascript
 ```
 
@@ -321,7 +321,7 @@ Accept: application/json, text/javascript
 XML Response
 
 ```
-GET http://api.knows.is/assets/ARM.L/
+GET https://api.knows.is/assets/ARM.L/
 Accept: application/xml, text/xml
 ```
 
@@ -344,7 +344,7 @@ Accept: application/xml, text/xml
 Plain Text Response
 
 ```
-GET http://api.knows.is/assets/ARM.L/
+GET https://api.knows.is/assets/ARM.L/
 Accept: text/plain
 ```
 
@@ -434,7 +434,7 @@ The asset sentiment endpoint will adhere to the following behaviour:
 JSON Response
 
 ```
-GET http://api.knows.is/assets/$ARMH/sentiment/?startdate=20121231&enddate=20130101
+GET https://api.knows.is/assets/$ARMH/sentiment/?startdate=20121231&enddate=20130101
 Accept: application/json, text/javascript
 ```
 
@@ -506,7 +506,7 @@ Accept: application/json, text/javascript
 XML Response
 
 ```
-GET http://api.knows.is/assets/$ARMH/sentiment/?start=20121231&end=20130101
+GET https://api.knows.is/assets/$ARMH/sentiment/?start=20121231&end=20130101
 Accept: application/xml, text/xml
 ```
 
@@ -579,7 +579,7 @@ Accept: application/xml, text/xml
 Plain Text Response
 
 ```
-GET http://api.knows.is/assets/$ARMH/sentiment/?start=20121231&end=20130101
+GET https://api.knows.is/assets/$ARMH/sentiment/?start=20121231&end=20130101
 Accept: text/plain
 ```
 
@@ -765,7 +765,7 @@ GET /assets/{identifier}/themes/
 JSON Response
 
 ```
-GET http://api.knows.is/assets/$ARMH/themes/
+GET https://api.knows.is/assets/$ARMH/themes/
 Accept: application/json, text/javascript
 ```
 
@@ -802,7 +802,7 @@ Accept: application/json, text/javascript
 XML Response
 
 ```
-GET http://api.knows.is/assets/$ARM/themes/
+GET https://api.knows.is/assets/$ARM/themes/
 Accept: application/xml, text/xml
 ```
 
@@ -841,7 +841,7 @@ Accept: application/xml, text/xml
 Plain Text Response
 
 ```
-GET http://api.knows.is/assets/ARM.L/themes/
+GET https://api.knows.is/assets/ARM.L/themes/
 Accept: text/plain
 ```
 ```
