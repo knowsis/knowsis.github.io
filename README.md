@@ -892,7 +892,7 @@ Access to the Insights endpoints is via the same oAuth credentials as the Knowsi
 
 ## Asset Tweets
 
-This endpoint will return the 20 most recent tweets for a particularl {identifier}, and will auto-update via javascript as new tweets become available. High-level analytics such as sentiment & volume are also available depending on subscription level.
+This endpoint will return a widget containing the most recent tweets for a particular {identifier}, and will auto-update via javascript as new tweets become available. High-level analytics such as sentiment & volume will also be visible  depending on subscription level.
 
 ```
 GET /assets/w/{identifier}/
@@ -902,13 +902,13 @@ The following are optional query string parameters
 
 |Field|Type|Description|
 |-----|----|-----------|
-|css|encoded url|the url to a stylesheet be injected into the <head> of the response for client styling|
+|css|encoded url|the https url to a stylesheet be injected into the <head> of the response for client styling|
 
 
 ### Example request
 
 ```
-GET https://insights.knows.is/assets/w/$ARM/?css=http://www.client.com/style.css
+GET https://insights.knows.is/assets/w/$ARM/?css=https://www.client.com/style.css
 Accept: text/html
 ```
 
