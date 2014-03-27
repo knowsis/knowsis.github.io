@@ -89,6 +89,17 @@
 
         </ul>
     </li>
+    <li>
+        <a href="#insights-widgets">Insights Widgets</a>
+        <ul>
+            <li>
+                <a href="#tweet-stream">Tweet Stream</a>
+                <ul>
+                    <li><a href="#example-requestresponse-5">Example request/response</a></li>                    
+                </ul>
+            </li>
+        </ul>
+    </li>
     <li><a href="#asset-identifiers">Asset Identifiers</a></li>
     <li><a href="#errors">Errors</a></li>
 </ul>
@@ -104,7 +115,7 @@
     is derived from 1000s of online sources and is generated through our own proprietary machine learning
     algorithms. </p>
 
-<p>We make the sentiment of 100s of publicly traded assets (equities, commodities, indices, forex pairs) and non
+<p>We make the sentiment of 1000s of publicly traded assets (equities, commodities, indices, forex pairs) and non
     tradable assets (macro drivers, pre IPO companies etc) available, as well as providing social demographics of the
     type of people that are discussing each asset.
 </p>
@@ -113,7 +124,7 @@
     <a name="technical-overview" class="anchor" href="#technical-overview"><span
             class="octicon octicon-link"></span></a>Technical Overview</h2>
 
-<p>Our API is accessible via HTTP, is RESTful, and offers both JSON, XML and plain text response formats (find the
+<p>Our API is accessible via HTTPS, is RESTful, and offers both JSON, XML and plain text response formats (find the
     schemas below). All data responses are UTF-8 encoded.</p>
 
 <p>We presently offer sentiment data for the current day.</p>
@@ -164,9 +175,6 @@
 
 <p>In order to specify your choice of response format use a standard HTTP Accept header.</p>
 
-
-
-
 <pre><code>accept: application/json, text/javascript
 
 accept: application/xml, text/xml
@@ -187,13 +195,11 @@ accept: text/plain
 
 <hr>
 
-<h1>
-    <a name="api-endpoints" class="anchor" href="#api-endpoints"><span class="octicon octicon-link"></span></a>API
-    Endpoints</h1>
+<h1><a name="api-endpoints" class="anchor" href="#api-endpoints"><span class="octicon octicon-link"></span></a>API Endpoints</h1>
 
 <p>Access to the Knowsis API is available through a RESTful interface</p>
 
-<p>The Knowsis API is available for registered users at <a href="http://api.knowsis.com/">http://api.knowsis.com/</a>.
+<p>The Knowsis API is available for registered users at <a href="https://api.knowsis.com/">https://api.knows.is/</a>.
     To register an account contact <a href="mailto:api@knowsis.com">api@knowsis.com</a></p>
 
 <h2>
@@ -760,9 +766,8 @@ accept: text/plain
     </tr>
     </tbody>
 </table>
-<h3>
-    <a name="tweet-resource" class="anchor" href="#tweet-resource"><span class="octicon octicon-link"></span></a>Tweet
-    Resource</h3>
+
+<h3><a name="tweet-resource" class="anchor" href="#tweet-resource"><span class="octicon octicon-link"></span></a>Tweet Resource</h3>
 
 <p>The tweet resource is made up of the following fields:</p>
 
@@ -792,7 +797,55 @@ accept: text/plain
 </p>
 
 <hr>
+
+<h1><a name="insights-widgets" class="anchor" href="#insights-widgets"><span class="octicon octicon-link"></span></a>Insights Widgets</h1>
+
+<p>As well as the raw data provided by the API we also provide HTML widgets that can be embedded into applications and websites through the use of iframes.<p>
+
+<p>Access to the Insights endpoints is via the same oAuth credentials as the Knowsis data API above. This API is responsible for rendering more visual elements such as widgets and charts.</p>
+
+<p>The Knowsis Insights API is available for registered users at https://insights.knows.is/. To register an account contact api@knowsis.com</p>
+
+<h2><a name="tweet-stream" class="anchor" href="#tweet-stream"><span class="octicon octicon-link"></span></a>Tweet Stream</h2>
+
+<p>This endpoint will return a widget containing the most recent tweets for a particular {identifier}, high-level analytics such as sentiment &amp; volume will also be visible depending on your package.</p>
+
+<p>Once the widget is rendered it will auto-update via javascript as new tweets become available or as the analytics values change.</p>
+
+<p>The widget comes pre-styled with a relatively neutral style, however  this can be overriden by providing the url to your own stylesheet (this must be served via https) which will be injected into the widget</p>
+
+<pre><code>GET https://insights.knows.is/assets/w/{identifier}/</code></pre>
+
+<p>The following are optional query string parameters</p>
+
+<table>
+    <thead>
+    <tr>
+        <th>Field</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>css</td>
+        <td>encoded url</td>
+        <td>the <strong>https</strong> url to a stylesheet be injected into the of the response for client styling</td>
+    </tr>   
+    </tbody>
+</table>
+
+<h3>
+    <a name="example-requestresponse-5" class="anchor" href="#example-requestresponse-5"><span
+            class="octicon octicon-link"></span></a>Example request/response</h3>
+            <pre><code>GET https://insights.knows.is/assets/w/$ARM/?css=https://www.client.com/style.css
+Accept: text/html</code></pre>
+
+
+
+
 <h1>
+
     <a name="asset-identifiers" class="anchor" href="#asset-identifiers"><span class="octicon octicon-link"></span></a>
     Asset Identifiers</h1>
 
