@@ -18,8 +18,7 @@
 		- [Asset Sentiment Resource](#asset-sentiment-resource)
 		- [Datapoint Resource](#datapoint-resource)
 		- [Sentiment Resource](#sentiment-resource)
-		- [Volume Resource](#volume-resource)
-		- [Demographics Resource](#demographics-resource)
+		- [Volume Resource](#volume-resource)		
 	- [Asset Themes](#get-assetsidentifierthemes)
 		- [Example request/response](#example-requestresponse-3)
 		- [Theme List Resource](#theme-list-resource)
@@ -37,8 +36,8 @@
 
 The Knowsis API allows developers to add Knowsis analytics to their website and applications. Knowsis sentiment data is derived from 1000s of online sources and is generated through our own proprietary machine learning algorithms. 
 
-We make the sentiment of 100s of publicly traded assets (equities, commodities, indices, forex pairs) and non tradable assets (macro drivers, pre IPO companies etc) available, as well as providing social demographics of the type of people that are discussing each asset.
-
+We make the sentiment of 100s of publicly traded assets (equities, commodities, indices, forex pairs) and non tradable assets (macro drivers, pre IPO companies etc) available.
+
 ## Technical Overview
 
 Our API is accessible via HTTPS, is RESTful, and offers both JSON, XML and plain text response formats (find the schemas below). All data responses are UTF-8 encoded.
@@ -49,7 +48,7 @@ Times and dates are provided in UTC timezone and are in ISO 8601 format.
 
 
 ## Authentication
-We use OAuth for authentication. As all resources are protected, you must sign every request you make using your API consumer key and secret, as per the OAuth Consumer Request 1.0 Draft 1 specification. We strongly recommend using an existing OAuth library.
+We use OAuth for authentication. As all resources are protected, you must sign every request you make using your API consumer key and secret, as per the OAuth Consumer Request 1.0 Draft 1 specification. We strongly recommend using an existing OAuth library. The [oauth.net](http://www.oauth.net/code) website lists suggested libraries by language.
 
 The following parameters MUST appear in every request:
 
@@ -61,7 +60,7 @@ The following parameters MUST appear in every request:
 
 
 The oauth_version parameter is optional; the value will be assumed to be 1.0 if it is not provided.
-
+
 ## Response Formats
 
 We can render responses for you using JSON, XML or plain text. 
@@ -82,7 +81,7 @@ Accept: text/plain
 
 ***
 
-
+
 # API Endpoints
 
 Access to the Knowsis API is available through a RESTful interface
@@ -454,23 +453,7 @@ Accept: application/json, text/javascript
       },
       "volume": {
         "change": 6
-      },
-      "demographics": {
-        "gender": {
-          "Male": 64,
-          "Female": 8,
-          "unspecified": 28
-        },
-        "location": {
-          "North America": 23,
-          "South America": 0,
-          "Europe": 38,
-          "Africa": 0,
-          "Asia": 22,
-          "Australasia": 5,
-          "unspecified": 12
-        }
-      }
+      }      
     },
     {     
       "date": "2012-12-31T00:00:00Z",     
@@ -481,22 +464,6 @@ Accept: application/json, text/javascript
       },
       "volume": {
         "change": 456
-      },
-      "demographics": {
-        "gender": {
-          "Male": 64,
-          "Female": 8,
-          "unspecified": 28
-        },
-        "location": {
-          "North America": 23,
-          "South America": 0,
-          "Europe": 38,
-          "Africa": 0,
-          "Asia": 22,
-          "Australasia": 5,
-          "unspecified": 12
-        }
       }
     }
   ]
@@ -526,23 +493,7 @@ Accept: application/xml, text/xml
         </sentiment>
         <volume>
           <change>106</change>
-        </volume>
-        <demographics>
-          <genders>
-            <gender name="Male">64</gender>
-            <gender name="Female">8</gender>
-            <gender name="unspecified">28</gender>
-          </genders>
-          <locations>
-            <location name="North America">23</location>
-            <location name="Europe">38</location>
-            <location name="South America">0</location>
-            <location name="Asia">22</location>
-            <location name="Africa">0</location>
-            <location name="Australasia">5</location>
-            <location name="unspecified">12</location>
-          </locations>
-        </demographics>
+        </volume>        
       </datapoint>
       <datapoint>
         <date>2012-12-31T00:00:00Z</date>
@@ -553,23 +504,7 @@ Accept: application/xml, text/xml
         </sentiment>
         <volume>
           <change>5</change>
-        </volume>
-        <demographics>
-          <genders>
-            <gender name="Male">64</gender>
-            <gender name="Female">8</gender>
-            <gender name="unspecified">28</gender>
-          </genders>
-          <locations>
-            <location name="North America">23</location>
-            <location name="Europe">38</location>
-            <location name="South America">0</location>
-            <location name="Asia">22</location>
-            <location name="Africa">0</location>
-            <location name="Australasia">5</location>
-            <location name="unspecified">12</location>
-          </locations>
-        </demographics>
+        </volume>        
       </datapoint>
     </datapoints>
   </response>
@@ -594,22 +529,13 @@ sentiment:current:-26
 sentiment:previous:-24
 sentiment:change:-2
 volume:change:-20
-gender:Male:64
-gender:Female:8
-gender:unspecified:28
-location:North America:28
-location:Europe:38
 
 date:2012-12-31T00:00:00Z
 sentiment:current:-24
 sentiment:previous:-2
 sentiment:change:-22
 volume:change:12
-gender:Male:45
-gender:Female:32
-gender:unspecified:23
-location:Asia:82
-location:South America:18
+
 ```
 
 ### Asset Sentiment Resource
@@ -639,22 +565,6 @@ The asset sentiment resource is made up of the following fields:
   },
   "volume": {
     "change": 6
-  },
-  "demographics": {
-    "gender": {
-      "Male": 64,
-      "Female": 8,
-      "unspecified": 28
-    },
-    "location": {
-      "North America": 23,
-      "South America": 0,
-      "Europe": 38,
-      "Africa": 0,
-      "Asia": 22,
-      "Australasia": 5,
-      "unspecified": 12
-    }
   }
 }
 ```
@@ -667,8 +577,7 @@ The datapoint resource is made up of the following fields:
   <tbody>
     <tr><td>date</td><td>datetime</td><td>date which datapoint relates to</td></tr>
     <tr><td>sentiment</td><td>sentiment resource</td><td>sentiment value</td></tr>
-    <tr><td>volume</td><td>volume resource</td><td>volume value</td></tr>
-    <tr><td>demographics</td><td>demographics resource</td><td>demographics</td></tr>
+    <tr><td>volume</td><td>volume resource</td><td>volume value</td></tr>    
   </tbody>
 </table>
 
@@ -714,43 +623,6 @@ The volume resource is made up of the following fields:
   </tbody>
 </table>
 
-
-
-### Demographics Resource
-
-```
-"demographics": {
-  "gender": {
-    "Male": 64,
-    "Female": 8,
-    "unspecified": 28
-  },
-  "location": {
-    "North America": 23,
-    "South America": 0,
-    "Europe": 38,
-    "Africa": 0,
-    "Asia": 22,
-    "Australasia": 5,
-    "unspecified": 12
-  }
-}
-```
-
-The demographics resource is made up of the following fields:
-
-<table>
-  <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
-  <tbody>
-    <tr><td>gender</td><td>gender resource</td><td>percentage split of conversation by gender</td></tr>    
-    <tr><td>location</td><td>location resource</td><td>percentage split of conversation by location</td></tr>    
-    <tr><td>classification</td><td>classification resource</td><td>percentage split of conversation by user classification</td></tr>    
-  </tbody>
-</table>
-
-
-#### Note
-For some users of social media platforms like Twitter it is not possible to accurately identify a gender (e.g. business accounts) or a location so in these cases we use “unspecified” as the returned value.
 
 
 ## Asset Themes
