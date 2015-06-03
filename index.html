@@ -64,8 +64,7 @@
                     <li><a href="#asset-sentiment-resource">Asset Sentiment Resource</a></li>
                     <li><a href="#datapoint-resource">Datapoint Resource</a></li>
                     <li><a href="#sentiment-resource">Sentiment Resource</a></li>
-                    <li><a href="#volume-resource">Volume Resource</a></li>
-                    <li><a href="#demographics-resource">Demographics Resource</a></li>
+                    <li><a href="#volume-resource">Volume Resource</a></li>                    
                 </ul>
             </li>
             <li>
@@ -116,8 +115,7 @@
     algorithms. </p>
 
 <p>We make the sentiment of 1000s of publicly traded assets (equities, commodities, indices, forex pairs) and non
-    tradable assets (macro drivers, pre IPO companies etc) available, as well as providing social demographics of the
-    type of people that are discussing each asset.
+    tradable assets (macro drivers, pre IPO companies etc) available.
 </p>
 
 <h2>
@@ -137,7 +135,7 @@
 
 <p>We use OAuth for authentication. As all resources are protected, you must sign every request you make using your API
     consumer key and secret, as per the OAuth Consumer Request 1.0 Draft 1 specification. We strongly recommend using an
-    existing OAuth library.</p>
+    existing OAuth library. The <a href="http://oauth.net/code/">oauth.net</a> website lists suggested libraries by language.</p>
 
 <p>The following parameters MUST appear in every request:</p>
 
@@ -539,12 +537,7 @@ accept: text/plain
         <td>volume</td>
         <td>volume resource</td>
         <td>volume value</td>
-    </tr>
-    <tr>
-        <td>demographics</td>
-        <td>demographics resource</td>
-        <td>demographics</td>
-    </tr>
+    </tr>    
     </tbody>
 </table>
 <h3>
@@ -606,47 +599,6 @@ accept: text/plain
     </tbody>
 </table>
 
-<h3>
-    <a name="demographics-resource" class="anchor" href="#demographics-resource">
-        <span class="octicon octicon-link"></span>
-    </a>
-    Demographics Resource</h3>
-
-<script src="https://gist.github.com/markunsworth/7119866.js"></script>
-
-<p>The demographics resource is made up of the following fields:</p>
-
-<table>
-    <thead>
-    <tr>
-        <th>Field</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>gender</td>
-        <td>gender resource</td>
-        <td>percentage split of conversation by gender</td>
-    </tr>
-    <tr>
-        <td>location</td>
-        <td>location resource</td>
-        <td>percentage split of conversation by location</td>
-    </tr>
-    <tr>
-        <td>classification</td>
-        <td>classification resource</td>
-        <td>percentage split of conversation by user classification</td>
-    </tr>
-    </tbody>
-</table>
-<h4>
-    <a name="note" class="anchor" href="#note"><span class="octicon octicon-link"></span></a>Note</h4>
-
-<p>For some users of social media platforms like Twitter it is not possible to accurately identify a gender (e.g.
-    business accounts) or a location so in these cases we use “unspecified” as the returned value.</p>
 
 <h2>
     <a name="asset-themes" class="anchor" href="#asset-themes"><span class="octicon octicon-link"></span></a>Asset
