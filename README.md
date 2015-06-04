@@ -785,6 +785,58 @@ Accept: text/html
 ```
 
 
+<p>The html will be styled as follows and any of the CSS classes can be styled:</p>
+
+<html>
+
+<body>
+    <div class="container">
+        <div class=" app-container">
+            <div id="ARMH " class="tweets-view-container ">
+                <ul class="tweets-list ">
+                    <li class="tweet-container ">
+                        <div class="tweet-title-container ">
+                            <a href="https://twitter.com/intent/user?screen_name=TweakTown ">
+                                <div class="tweet-profile-icon "><img src="/external/twitter_profile/?url=https://pbs.twimg.com/profile_images/585849533466181633/PrBrq56i_normal.jpg " width="15px " height="15px " alt="User Image "></div>
+                                <div class="tweet-profile ">TweakTown</div>
+                                <div class="tweet-username ">@TweakTown</div>
+                                <div class="tweet-space ">·</div>
+                            </a>
+                            <a class="tweet-date-link " href="https://twitter.com/TweakTown/status/606407580403920897 " target="_blank ">
+                                <div class="tweet-date " data-created="2015-06-04T10:30:08 " title="Thu, 4 Jun 2015 10:30:08 +0100 ">an hour</div>
+                            </a>
+                            <div class="tweet-controller ">
+                                <a href="https://twitter.com/intent/favorite?tweet_id=606407580403920897 ">
+                                    <div class="twitter-favourite "></div>
+                                </a>
+                                <a href="https://twitter.com/intent/retweet?tweet_id=606407580403920897 ">
+                                    <div class="twitter-retweet "></div>
+                                </a>
+                                <a href="https://twitter.com/intent/tweet?in_reply_to=606407580403920897 ">
+                                    <div class="twitter-reply "></div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="tweet-content ">
+                            .@amd announces its 6th Generation A-Series processor $AMD, $ARMH, $MSFT http://t.co/JkHYwVkS28 http://t.co/04TyNLjvQh
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="powered-by-knowsis ">
+                Powered by <a href="http://knowsis.com " target="_blank " title="Knowsis | Actionable Web Intelligence ">Knowsis</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<p>The "Powered By Knowsis" section must not be styled, moved or hidden without prior agreement.</p>
+
+
+
+
 ***
 
 # Asset Identifiers
