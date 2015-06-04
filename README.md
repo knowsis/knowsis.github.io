@@ -787,6 +787,7 @@ Accept: text/html
 
 <p>The html will be styled as follows and any of the CSS classes can be styled:</p>
 
+```
 <html>
 
 <body>
@@ -831,6 +832,7 @@ Accept: text/html
 </body>
 
 </html>
+```
 
 <p>The "Powered By Knowsis" section must not be styled, moved or hidden without prior agreement.</p>
 
