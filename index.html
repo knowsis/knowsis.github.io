@@ -30,6 +30,7 @@
         <ul>
             <li><a href="#technical-overview">Technical Overview</a></li>
             <li><a href="#authentication">Authentication</a></li>
+            <li><a href="#api-clients">API Clients</a></li>
             <li><a href="#response-formats">Response Formats</a></li>
             <li><a href="#response-compression">Response Compression</a></li>
         </ul>
@@ -129,6 +130,8 @@
 
 <p>Times and dates are provided in UTC timezone and are in ISO 8601 format.</p>
 
+<hr>
+
 <h2>
     <a name="authentication" class="anchor" href="#authentication"><span class="octicon octicon-link"></span></a>Authentication
 </h2>
@@ -163,6 +166,23 @@
 <p>The oauth_version parameter is optional; the value will be assumed to be 1.0 if it is not provided.
 </p>
 
+<hr>
+
+<h2>
+    <a name="api-clients" class="anchor" href="#api-clients"><span class="octicon octicon-link"></span></a>API Clients</h2>
+
+<h3>Python</h3>
+
+<p>We currently offer a Python API Client (pyknowsis) which is available from pypi.</p>
+
+<pre><code>pip install pyknowsis</code></pre>
+
+<p>You can get the latest version of the source code from our <a href="http://www.github.com/knowsis/pyknowsis">github repository</a> if you want to be cutting edge, or just work out how to write your own.</p>
+
+<p>Documentation is also available on <a href="https://github.com/knowsis/pyknowsis/blob/master/README.md">github</a>.</p>
+
+<hr>
+
 <h2>
     <a name="response-formats" class="anchor" href="#response-formats"><span class="octicon octicon-link"></span></a>Response
     Formats</h2>
@@ -179,6 +199,7 @@ accept: application/xml, text/xml
 
 accept: text/plain
 </code></pre>
+
 
 <hr>
 <h2>

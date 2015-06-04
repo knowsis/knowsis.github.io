@@ -4,6 +4,7 @@
   - [Technical Overview](#technical-overview)
 	- [Authentication](#authentication)
 	- [Response Formats](#response-formats)
+  - [API Clients](#api-clients)
 - [API Endpoints](#api-endpoints)
 	- [List Assets](#get-assets)
 		- [Example request/response](#example-requestresponse)
@@ -77,6 +78,23 @@ Accept: application/xml, text/xml
 
 Accept: text/plain
 ```
+
+
+## API Clients
+
+We currently offer a python API Client (pyknowsis) which is available from pypi. 
+
+```
+pip install pyknowsis
+
+```
+
+You can also get the latest version of the source code from our [github repository](http://www.github.com/knowsis/pyknowsis).
+
+
+Documentation is also available on the [github repository](https://github.com/knowsis/pyknowsis/blob/master/README.md)
+
+
 
 
 ***
