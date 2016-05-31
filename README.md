@@ -41,7 +41,7 @@ We make the sentiment of 100s of publicly traded assets (equities, commodities, 
 
 ## Technical Overview
 
-Our API is accessible via HTTPS, is RESTful, and offers both JSON, XML and plain text response formats (find the schemas below). All data responses are UTF-8 encoded.
+Our API is accessible via HTTPS, is RESTful, and offers JSON response formats (find the schema below). All data responses are UTF-8 encoded.
 
 We presently offer sentiment data for the current day.
 
@@ -64,7 +64,7 @@ The oauth_version parameter is optional; the value will be assumed to be 1.0 if 
 
 ## Response Formats
 
-We can render responses for you using JSON, XML or plain text. 
+We can render responses for you using JSON. 
 
 The default format is JSON
 
@@ -74,9 +74,6 @@ In order to specify your choice of response format use a standard HTTP Accept he
 ```
 Accept: application/json, text/javascript
 
-Accept: application/xml, text/xml
-
-Accept: text/plain
 ```
 
 
@@ -192,88 +189,7 @@ Accept: application/json, text/javascript
     }
   ]
 }
-
 ```
-
-XML Response
-
-```
-GET https://api.knows.is/assets/
-Accept: application/xml, text/xml
-```
-
-```
-<response>
-  <meta>
-    <page>1</page>
-    <pagesize>100</pagesize>
-    <items>2</items>
-    <total_items>1</total_items>
-  </meta>
-  <assets>
-    <asset>
-      <name>Anglo American PLC</name>
-      <type>Equity</type>
-      <identifiers>
-        <identifier>
-          <value>AAL:LN</value>
-          <type>Bloomberg</type>
-        </identifier>
-        <identifier>
-          <value>AAL.L</value>
-          <type>Reuters</type>
-        </identifier>
-        <identifier>
-          <value>GB00B1XZS820</value>
-          <type>ISIN</type>
-        </identifier>
-      </identifiers>
-    </asset>
-    <asset>
-      <name>ARM Holdings PLC</name>
-      <type>Equity</type>
-      <identifiers>
-        <identifier>
-          <value>ARM:LN</value>
-          <type>Bloomberg</type>
-        </identifier>
-        <identifier>
-          <value>ARMH:US</value>
-          <type>Bloomberg</type>
-        </identifier>
-      </identifiers>
-    </asset>
-  </assets>
-</response>
-```
-
-
-Plain Text Response
-
-```
-GET https://api.knows.is/assets/
-Accept: text/plain
-```
-
-```
-meta:page:1
-meta:pagesize:100
-meta:items:2
-meta:total_items:2
-
-name: Anglo American PLC"
-type: Equity
-id:Bloomberg:AAL:LN
-id:Reuters:AAL.L
-id:ISIN:GB00B1XZS820 
-
-name: ARM Holdings PLC
-type: Equity
-id:BloomBerg|ARM:LN
-id:BloomBerg|ARMH:US
-```
-
-
 
 ###Asset List Resource
 
@@ -335,42 +251,6 @@ Accept: application/json, text/javascript
 }
 ```
 
-XML Response
-
-```
-GET https://api.knows.is/assets/ARM.L/
-Accept: application/xml, text/xml
-```
-
-```
-<response>
-    <name>ARM Holdings PLC</name>
-    <identifiers>
-      <identifier>
-        <value>ARM:LN</value>
-        <type>Bloomberg</type>
-      </identifier>
-      <identifier>
-        <value>ARMH:US</value>
-        <type>Bloomberg</type>
-      </identifier>
-    </identifiers>
-</response>
-```
-
-Plain Text Response
-
-```
-GET https://api.knows.is/assets/ARM.L/
-Accept: text/plain
-```
-
-```
-name:ARM Holdings PLC
-identifier:BloomBerg|ARM:LN
-identifier:BloomBerg|ARMH:US
-```
-
 
 ### Asset Resource
 The asset resource is made up of the following fields:
@@ -396,18 +276,6 @@ The asset resource is made up of the following fields:
   "type": "Cashtag"
 }
 ```
-
-Accept: application/xml, text/xml
-```
-<identifier>
-  <value>$MMM</value>
-  <type>"Cashtag</type>
-</identifier>
-```
-
-Accept: text/plain
-id:Cashtag|$MMM
-
 
 
 The asset identifier resource is up of the following fields:
@@ -488,73 +356,7 @@ Accept: application/json, text/javascript
 }
 ```
 
-XML Response
 
-```
-GET https://api.knows.is/assets/$ARMH/sentiment/?start=20121231&end=20130101
-Accept: application/xml, text/xml
-```
-
-```
-<response>
-    <name>ARM Holdings PLC</name>
-    <identifier>$ARMH</identifier>
-    <startdate>2012-12-31T00:00:00Z</startdate>
-    <enddate>2013-01-01T00:00:00Z</enddate>
-    <datapoints>
-      <datapoint>
-        <date>2013-01-01T00:00:00Z</date>
-        <sentiment>
-          <current>50</current>
-          <previous>12</previous>
-          <change>38</change>
-        </sentiment>
-        <volume>
-          <change>106</change>
-        </volume>        
-      </datapoint>
-      <datapoint>
-        <date>2012-12-31T00:00:00Z</date>
-        <sentiment>
-          <current>12</current>
-          <previous>1</previous>
-          <change>11</change>
-        </sentiment>
-        <volume>
-          <change>5</change>
-        </volume>        
-      </datapoint>
-    </datapoints>
-  </response>
-```
-
-
-Plain Text Response
-
-```
-GET https://api.knows.is/assets/$ARMH/sentiment/?start=20121231&end=20130101
-Accept: text/plain
-```
-
-```
-name: ARM Holdings PLC
-identifier:$ARMH
-startdate:2012-12-31T00:00:00Z
-enddate:2013-01-01T00:00:00Z
-
-date:2013-01-01T00:00:00Z
-sentiment:current:-26
-sentiment:previous:-24
-sentiment:change:-2
-volume:change:-20
-
-date:2012-12-31T00:00:00Z
-sentiment:current:-24
-sentiment:previous:-2
-sentiment:change:-22
-volume:change:12
-
-```
 
 ### Asset Sentiment Resource
 
@@ -689,65 +491,7 @@ Accept: application/json, text/javascript
 }
 ```
 
-XML Response
 
-```
-GET https://api.knows.is/assets/$ARM/themes/
-Accept: application/xml, text/xml
-```
-
-```
-<response>
-    <name>ARM Holdings PLC</name>
-    <identifier>$ARMH</identifier>
-    <startdate>2013-01-01T00:00:00Z</startdate>
-    <enddate>2013-01-01T00:00:00Z</enddate>
-    <dailythemes>
-      <dailytheme>
-        <date>2013-01-01T00:00:00Z</date>
-        <themes>
-          <theme>
-            <title>this is the title of the theme</title>
-          </theme>
-          <theme>
-            <title>this is another theme’s title</title>
-          </theme>
-        </themes>
-      </dailytheme>
-      <date>2013-01-02T00:00:00Z</date>
-        <themes>
-          <theme>
-            <title>this is the title of the theme</title>
-          </theme>
-          <theme>
-            <title>this is another theme’s title</title>
-          </theme>
-        </themes>
-      </dailytheme>
-    </dailythemes>
-</response>
-```
-
-Plain Text Response
-
-```
-GET https://api.knows.is/assets/ARM.L/themes/
-Accept: text/plain
-```
-```
-name:ARM Holdings PLC
-identifier:ARM.L
-startdate:2013-01-01T00:00:00Z
-enddate:2013-01-01T00:00:00Z
-
-date:2013-01-01T00:00:00Z
-theme:title:this is the title of the theme
-theme:title:this is another theme’s title
-
-date:2013-01-02T00:00:00Z
-theme:title:this is the title of the theme
-theme:title:this is another theme’s title
-```
 
 ### Theme List Resource
 

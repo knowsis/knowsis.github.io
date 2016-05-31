@@ -123,8 +123,8 @@
     <a name="technical-overview" class="anchor" href="#technical-overview"><span
             class="octicon octicon-link"></span></a>Technical Overview</h2>
 
-<p>Our API is accessible via HTTPS, is RESTful, and offers both JSON, XML and plain text response formats (find the
-    schemas below). All data responses are UTF-8 encoded.</p>
+<p>Our API is accessible via HTTPS, is RESTful, and we provide response in JSON format (find the
+    schema below). All data responses are UTF-8 encoded.</p>
 
 <p>We presently offer sentiment data for the current day.</p>
 
@@ -187,17 +187,12 @@
     <a name="response-formats" class="anchor" href="#response-formats"><span class="octicon octicon-link"></span></a>Response
     Formats</h2>
 
-<p>We can render responses for you using JSON, XML or plain text. </p>
-
 <p>The default format is JSON</p>
 
 <p>In order to specify your choice of response format use a standard HTTP Accept header.</p>
 
 <pre><code>accept: application/json, text/javascript
 
-accept: application/xml, text/xml
-
-accept: text/plain
 </code></pre>
 
 
@@ -266,18 +261,10 @@ accept: text/plain
     <a name="example-requestresponse" class="anchor" href="#example-requestresponse"><span
             class="octicon octicon-link"></span></a>Example request/response</h3>
 
-<p>JSON Response</p>
+<p>Response</p>
 
 <script src="https://gist.github.com/markunsworth/7104240.js"></script>
 
-
-<p>XML Response</p>
-
-<script src="https://gist.github.com/markunsworth/7104462.js"></script>
-
-<p>Plain Text Response</p>
-
-<script src="https://gist.github.com/markunsworth/7104507.js"></script>
 
 <h3>
     <a name="asset-list-resource" class="anchor" href="#asset-list-resource"><span class="octicon octicon-link"></span></a>Asset
@@ -356,18 +343,10 @@ accept: text/plain
     <a name="example-requestresponse-1" class="anchor" href="#example-requestresponse-1"><span
             class="octicon octicon-link"></span></a>Example request/response</h3>
 
-<p>JSON Response</p>
+<p>Response</p>
 
 <script src="https://gist.github.com/markunsworth/7119164.js"></script>
 
-
-<p>XML Response</p>
-
-<script src="https://gist.github.com/markunsworth/7119179.js"></script>
-
-<p>Plain Text Response</p>
-
-<script src="https://gist.github.com/markunsworth/7119185.js"></script>
 
 <h3>
     <a name="asset-resource" class="anchor" href="#asset-resource"><span class="octicon octicon-link"></span></a>Asset
@@ -473,17 +452,10 @@ accept: text/plain
     <a name="example-requestresponse-2" class="anchor" href="#example-requestresponse-2"><span
             class="octicon octicon-link"></span></a>Example request/response</h4>
 
-<p>JSON Response</p>
+<p>Response</p>
 
 <script src="https://gist.github.com/markunsworth/7119801.js"></script>
 
-<p>XML Response</p>
-
-<script src="https://gist.github.com/markunsworth/7119810.js"></script>
-
-<p>Plain Text Response</p>
-
-<script src="https://gist.github.com/markunsworth/7119812.js"></script>
 
 <h3>
     <a name="asset-sentiment-resource" class="anchor" href="#asset-sentiment-resource"><span
@@ -559,6 +531,11 @@ accept: text/plain
         <td>volume resource</td>
         <td>volume value</td>
     </tr>    
+    <tr>
+        <td>tweet_counts</td>
+        <td>tweet counts resource</td>
+        <td>raw tweet counts</td>
+    </tr>
     </tbody>
 </table>
 <h3>
@@ -595,6 +572,7 @@ accept: text/plain
     </tr>
     </tbody>
 </table>
+
 <h3>
     <a name="volume-resource" class="anchor" href="#volume-resource"><span class="octicon octicon-link"></span></a>Volume
     Resource</h3>
@@ -619,7 +597,45 @@ accept: text/plain
     </tr>
     </tbody>
 </table>
+<h3>
+    <a name="sentiment-resource" class="anchor" href="#sentiment-resource"><span
+            class="octicon octicon-link"></span></a>Tweet Counts Resource</h3>
+<script src="https://gist.github.com/markunsworth/7c9646e811b522be3c1a9671c68fe54d.js"></script>
 
+
+<p>The tweet counts resource is made up of the following fields:</p>
+
+<table>
+    <thead>
+    <tr>
+        <th>Field</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>positive</td>
+        <td>integer</td>
+        <td>count of tweets with positive sentiment</td>
+    </tr>
+    <tr>
+        <td>negative</td>
+        <td>integer</td>
+        <td>count of tweets with negative sentiment</td>
+    </tr>
+    <tr>
+        <td>neutral</td>
+        <td>integer</td>
+        <td>count of tweets with neutral sentiment</td>
+    </tr>
+    <tr>
+        <td>total</td>
+        <td>integer</td>
+        <td>total count of tweets</td>
+    </tr>
+    </tbody>
+</table>
 
 <h2>
     <a name="asset-themes" class="anchor" href="#asset-themes"><span class="octicon octicon-link"></span></a>Asset
@@ -634,17 +650,10 @@ accept: text/plain
     <a name="example-requestresponse-3" class="anchor" href="#example-requestresponse-3"><span
             class="octicon octicon-link"></span></a>Example request/response</h3>
 
-<p>JSON Response</p>
+<p>Response</p>
 
 <script src="https://gist.github.com/markunsworth/7119874.js"></script>
 
-<p>XML Response</p>
-
-<script src="https://gist.github.com/markunsworth/7119887.js"></script>
-
-<p>Plain Text Response</p>
-
-<script src="https://gist.github.com/markunsworth/7119896.js"></script>
 
 <h3>
     <a name="theme-list-resource" class="anchor" href="#theme-list-resource"><span class="octicon octicon-link"></span></a>Theme
@@ -706,17 +715,10 @@ accept: text/plain
     <a name="example-requestresponse-4" class="anchor" href="#example-requestresponse-3"><span
             class="octicon octicon-link"></span></a>Example request/response</h3>
 
-<p>JSON Response</p>
+<p>Response</p>
 
 <script src="https://gist.github.com/markunsworth/7121306.js"></script>
 
-<p>XML Response</p>
-
-<script src="https://gist.github.com/markunsworth/7122123.js"></script>
-
-<p>Plain Text Response</p>
-
-<script src="https://gist.github.com/markunsworth/7122140.js"></script>
 
 <h3>
     <a name="tweet-list-resource" class="anchor" href="#tweet-list-resource"><span class="octicon octicon-link"></span></a>Tweet
