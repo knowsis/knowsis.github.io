@@ -549,48 +549,52 @@ Accept: text/html
 
 <p>The html will be styled as follows and any of the CSS classes can be styled:</p>
 
-```
+```html
 <html>
 
 <body>
-    <div class="container">
-        <div class=" app-container">
-            <div id="ARMH " class="tweets-view-container ">
-                <ul class="tweets-list ">
-                    <li class="tweet-container ">
-                        <div class="tweet-title-container ">
-                            <a href="https://twitter.com/intent/user?screen_name=TweakTown ">
-                                <div class="tweet-profile-icon "><img src="/external/twitter_profile/?url=https://pbs.twimg.com/profile_images/585849533466181633/PrBrq56i_normal.jpg " width="15px " height="15px " alt="User Image "></div>
-                                <div class="tweet-profile ">TweakTown</div>
-                                <div class="tweet-username ">@TweakTown</div>
-                                <div class="tweet-space ">·</div>
-                            </a>
-                            <a class="tweet-date-link " href="https://twitter.com/TweakTown/status/606407580403920897 " target="_blank ">
-                                <div class="tweet-date " data-created="2015-06-04T10:30:08 " title="Thu, 4 Jun 2015 10:30:08 +0100 ">an hour</div>
-                            </a>
-                            <div class="tweet-controller ">
-                                <a href="https://twitter.com/intent/favorite?tweet_id=606407580403920897 ">
-                                    <div class="twitter-favourite "></div>
-                                </a>
-                                <a href="https://twitter.com/intent/retweet?tweet_id=606407580403920897 ">
-                                    <div class="twitter-retweet "></div>
-                                </a>
-                                <a href="https://twitter.com/intent/tweet?in_reply_to=606407580403920897 ">
-                                    <div class="twitter-reply "></div>
-                                </a>
+<div class="container">
+    <div class=" app-container">
+        <div id="ARMH " class="tweets-view-container ">
+            <ul class="tweets-list ">
+                <li class="tweet-container">
+                    <div class="tweet-title-container">
+                        <a href="https://twitter.com/intent/user?screen_name=HalftimeReport">
+                            <div class="tweet-profile-icon"><img
+                                    src="https://testinsights.knows.is/external/twitter_profile/?url=https://pbs.twimg.com/profile_images/590580807753986049/fhYEXRiC_normal.png"
+                                    width="15px" height="15px" alt="User Image"></div>
+                            <div class="tweet-profile">CNBC Halftime Report</div>
+                            <div class="tweet-username">@HalftimeReport</div>
+                        </a>
+                        <a class="tweet-date-link" href="https://twitter.com/HalftimeReport/status/738400580079517697"
+                           target="_blank">
+                            <div class="tweet-date" data-created="2016-06-02T16:03:11"
+                                 title="Thu, 2 Jun 2016 16:03:11 +0100">2 minutes
                             </div>
+                        </a>
+                    </div>
+                    <div class="tweet-content">
+                        Best days behind for Apple? $AAPL
+                        <a href="http://twitter.com/HalftimeReport/status/738400580079517697/photo/1"
+                           class="link-primary media-url" target="_blank">pic.twitter.com/7a00FrhTaK</a>
+
+                        <div class="tweet-media">
+                            <a href="http://twitter.com/HalftimeReport/status/738400580079517697/photo/1"
+                               target="_blank">
+                                <img class="img-responsive"
+                                     src="https://testinsights.knows.is/external/image/?url=https://pbs.twimg.com/media/Cj9TaZsWgAAKCIM.jpg"
+                                     alt="Image attached to this tweet">
+                            </a>
                         </div>
-                        <div class="tweet-content ">
-                            .@amd announces its 6th Generation A-Series processor $AMD, $ARMH, $MSFT http://t.co/JkHYwVkS28 http://t.co/04TyNLjvQh
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div id="powered-by-knowsis ">
-                Powered by <a href="http://knowsis.com " target="_blank " title="Knowsis | Actionable Web Intelligence ">Knowsis</a>
-            </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="powered-by-knowsis ">
+            Powered by <a href="http://knowsis.com " target="_blank " title="Knowsis | Actionable Web Intelligence ">Knowsis</a>
         </div>
     </div>
+</div>
 </body>
 
 </html>
@@ -598,8 +602,21 @@ Accept: text/html
 
 <p>The "Powered By Knowsis" section must not be styled, moved or hidden without prior agreement.</p>
 
+### Images
 
+By default images attached to a tweet are shown and links to these images are hidden.
 
+If you want to hide images and display links instead, add the following css to your stylesheet:
+
+```css
+.media-url {
+	display: inline;
+}
+
+.tweet-media {
+	display: none;
+}
+```
 
 ***
 
