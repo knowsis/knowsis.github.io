@@ -24,8 +24,10 @@
 		- [Example request/response](#example-requestresponse-3)
 		- [Theme List Resource](#theme-list-resource)
 		- [Theme Resource](#theme-resource)
-- [Insights Endpoints](#insights-endpoints)
-	- [Asset Tweets](#get-tweets)
+- [Insights Widgets](#insights-widgets)
+	- [General](#general)
+	- [Tweet Stream](#tweet-stream)
+	- [Top Content](#top-content)
 - [Asset Identifiers](#asset-identifiers)
 - [Errors](#errors)
 
@@ -520,87 +522,116 @@ The theme resource is made up of the following fields:
 
 ***
 
-# Insights Endpoints
+# Insights Widgets
 
 Access to the Insights endpoints is via the same oAuth credentials as the Knowsis data API above. This API is responsible for rendering more visual elements such as widgets and graphs.
 
-## Asset Tweets
+## General
 
-This endpoint will return a widget containing the most recent tweets for a particular {identifier}, and will auto-update via javascript as new tweets become available. High-level analytics such as sentiment & volume will also be visible  depending on subscription level.
+The returned widgets are `html` pages, which include `css` and `js` files where necessary.
+
+### Requests
+
+The Insights Widgets API is available at https://insights.knows.is/widgets/, e.g.:
+
 
 ```
-GET /assets/w/{identifier}/
+GET https://insights.knows.is/widgets/tweets/$ARM/?css=https://www.client.com/style.css
+Accept: text/html
 ```
 
 The following are optional query string parameters 
 
 |Field|Type|Description|
 |-----|----|-----------|
-|css|encoded url|the https url to a stylesheet be injected into the <head> of the response for client styling|
+|css|encoded url|the https url to a stylesheet which will replace the widget's default theme stylesheet|
+
+### Markup
+All widgets share the following base markup:
+
+```html
+<!DOCTYPE html>
+<html>
+<head></head>
+	<body>
+		<div id="app-container">
+			<!-- widget content goes here -->
+		</div>
+		<div id="powered-by-knowsis">
+		    Powered by <a href="http://knowsis.com" target="_blank" title="Knowsis | Actionable Web Intelligence">Knowsis</a>
+		</div>
+	</body>
+</html>
+```
+
+### Styling
+
+Each widget uses three stylesheets:
+
+1. `skeleton.css`, which provides a basic layout.
+2. `theme.css`, which provides the default theme (colours, typography) for the widget.
+3. `powered-by-knowsis.css`, which styles the bottom *Powered by Knowsis* footer.
+
+The *Powered By Knowsis* footer must not be styled, moved or hidden without prior agreement.
+
+### Custom Themes
+
+You can provide your own theme stylesheet, which will replace the widget's default theme.
+This allows you to style widgets according to your brand guidelines.
+
+## Tweet Stream
+
+This endpoint will return a widget containing the most recent tweets for a particular {identifier}, and will auto-update via javascript.
+
+```
+GET /tweets/{identifier}/
+```
 
 
 ### Example request
 
 ```
-GET https://insights.knows.is/assets/w/$ARM/?css=https://www.client.com/style.css
+GET https://insights.knows.is/widgets/tweets/$ARM,$TSLA/?css=https://www.client.com/style.css
 Accept: text/html
 ```
 
-
-<p>The html will be styled as follows and any of the CSS classes can be styled:</p>
-
 ```html
-<html>
-
-<body>
-<div class="container">
-    <div class=" app-container">
-        <div id="ARMH " class="tweets-view-container ">
-            <ul class="tweets-list ">
-                <li class="tweet-container">
-                    <div class="tweet-title-container">
-                        <a href="https://twitter.com/intent/user?screen_name=HalftimeReport">
-                            <div class="tweet-profile-icon"><img
-                                    src="https://testinsights.knows.is/external/twitter_profile/?url=https://pbs.twimg.com/profile_images/590580807753986049/fhYEXRiC_normal.png"
-                                    width="15px" height="15px" alt="User Image"></div>
-                            <div class="tweet-profile">CNBC Halftime Report</div>
-                            <div class="tweet-username">@HalftimeReport</div>
-                        </a>
-                        <a class="tweet-date-link" href="https://twitter.com/HalftimeReport/status/738400580079517697"
-                           target="_blank">
-                            <div class="tweet-date" data-created="2016-06-02T16:03:11"
-                                 title="Thu, 2 Jun 2016 16:03:11 +0100">2 minutes
-                            </div>
-                        </a>
+<div id="app-container">
+    <ul id="ARMH" class="tweets-list">
+        <li class="tweet-container">
+            <div class="tweet-title-container">
+                <a href="https://twitter.com/intent/user?screen_name=HalftimeReport">
+                    <div class="tweet-profile-icon"><img
+                            src="https://testinsights.knows.is/external/twitter_profile/?url=https://pbs.twimg.com/profile_images/590580807753986049/fhYEXRiC_normal.png"
+                            width="15px" height="15px" alt="User Image"></div>
+                    <div class="tweet-profile">CNBC Halftime Report</div>
+                    <div class="tweet-username">@HalftimeReport</div>
+                </a>
+                <a class="tweet-date-link" href="https://twitter.com/HalftimeReport/status/738400580079517697"
+                   target="_blank">
+                    <div class="tweet-date" data-created="2016-06-02T16:03:11"
+                         title="Thu, 2 Jun 2016 16:03:11 +0100">2 minutes
                     </div>
-                    <div class="tweet-content">
-                        Best days behind for Apple? $AAPL
-                        <a href="http://twitter.com/HalftimeReport/status/738400580079517697/photo/1"
-                           class="link-primary media-url" target="_blank">pic.twitter.com/7a00FrhTaK</a>
+                </a>
+            </div>
+            <div class="tweet-content">
+                Best days behind for Apple? $AAPL
+                <a href="http://twitter.com/HalftimeReport/status/738400580079517697/photo/1"
+                   class="link-primary media-url" target="_blank">pic.twitter.com/7a00FrhTaK</a>
 
-                        <div class="tweet-media">
-                            <a href="http://twitter.com/HalftimeReport/status/738400580079517697/photo/1"
-                               target="_blank">
-                                <img class="img-responsive"
-                                     src="https://testinsights.knows.is/external/image/?url=https://pbs.twimg.com/media/Cj9TaZsWgAAKCIM.jpg"
-                                     alt="Image attached to this tweet">
-                            </a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div id="powered-by-knowsis ">
-            Powered by <a href="http://knowsis.com " target="_blank " title="Knowsis | Actionable Web Intelligence ">Knowsis</a>
-        </div>
-    </div>
+                <div class="tweet-media">
+                    <a href="http://twitter.com/HalftimeReport/status/738400580079517697/photo/1"
+                       target="_blank">
+                        <img class="img-responsive"
+                             src="https://testinsights.knows.is/external/image/?url=https://pbs.twimg.com/media/Cj9TaZsWgAAKCIM.jpg"
+                             alt="Image attached to this tweet">
+                    </a>
+                </div>
+            </div>
+        </li>
+    </ul>
 </div>
-</body>
-
-</html>
 ```
-
-<p>The "Powered By Knowsis" section must not be styled, moved or hidden without prior agreement.</p>
 
 ### Images
 
@@ -616,6 +647,45 @@ If you want to hide images and display links instead, add the following css to y
 .tweet-media {
 	display: none;
 }
+```
+
+## Top Content
+
+This endpoint will return a widget containing most shared articles for a particular {identifier}, and will auto-update via javascript.
+
+```
+GET /top-content/{identifier}/
+```
+
+### Example Request
+
+```
+GET https://insights.knows.is/widgets/top-content/AAPL/?css=https://www.client.com/style.css
+Accept: text/html
+```
+
+```html
+<div id="app-container">
+
+    <div class="top-content-list">
+        
+        <article>
+            <div class="tile" data-url-identifier="5755795537f91844a95254a7">
+                <div style="background-image:url('https://insights.knows.is/external/image/?url=http://static2.businessinsider.com/image/5755795152bcd01d7b8c6cf9-1190-625/apple-is-the-top-tech-company-in-the-fortune-500.jpg');"></div>
+            </div>
+
+            <div class="text">
+                <h4>Apple is No. 3 in Fortune 500 - Business Insider</h4>
+                <small>businessinsider.com | 06 Jun, 2016</small>
+                <p>Apple continues to leads the tech industry, at least when measuring by sales.</p>
+            </div>
+
+            <a class="component-link" href="http://www.businessinsider.com/apple-is-no-3-in-fortune-500-2016-6" target="_blank"><span></span></a>
+        </article>
+
+    </div>
+
+</div>
 ```
 
 ***
