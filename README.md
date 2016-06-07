@@ -581,7 +581,7 @@ This allows you to style widgets according to your brand guidelines.
 
 ## Tweet Stream
 
-This endpoint will return a widget containing the most recent tweets for a particular {identifier}, and will auto-update via javascript.
+This endpoint will return a widget containing the most recent tweets for a particular {identifier} or a list of comma-seperated {identifier}s, and will auto-update via javascript.
 
 ```
 GET /tweets/{identifier}/
@@ -651,7 +651,7 @@ If you want to hide images and display links instead, add the following css to y
 
 ## Top Content
 
-This endpoint will return a widget containing most shared articles for a particular {identifier}, and will auto-update via javascript.
+This endpoint will return a widget containing most shared articles for a particular {identifier} or a list of comma-seperated {identifier}s, and will auto-update via javascript.
 
 ```
 GET /top-content/{identifier}/
@@ -660,7 +660,7 @@ GET /top-content/{identifier}/
 ### Example Request
 
 ```
-GET https://insights.knows.is/widgets/top-content/AAPL/?css=https://www.client.com/style.css
+GET https://insights.knows.is/widgets/top-content/AAPL,TSLA/?css=https://www.client.com/style.css
 Accept: text/html
 ```
 
