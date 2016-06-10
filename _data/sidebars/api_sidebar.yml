@@ -1,0 +1,108 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: Sidebar
+  levels: one
+  folders:
+
+  - title: Overview
+    output: web
+    folderitems:
+    - title: Home
+      url: /
+      output: web
+      type: homepage
+    - title: Authentication
+      url: /#authentication
+      output: web
+    - title: Response Formats
+      url: /#response-formats
+      output: web
+    - title: Push API
+      url: /websockets/
+      output:   
+    - title: Identfiers
+      url: /api-identifiers/
+      output: web
+    - title: API Errors
+      url: /api-errors/
+      output: web  
+
+  - title: API Endpoints
+    output: web
+    folderitems: 
+    - title: Asset List
+      url: /api-assets/
+      output: web
+    - title: Assets Details
+      url: /api-asset-details/
+      output: web
+    - title: Asset Sentiment
+      url: /api-asset-sentiment/
+      output: web
+    - title: Asset Themes
+      url: /api-asset-themes/
+      output: web
+    - title: Asset Top Content
+      url: /api-asset-top-content/
+      output: 
+
+  - title: API Objects
+    output: web
+    folderitems: 
+    - title: Asset List 
+      url: /api-objects/#asset-list-object
+      output: web
+    - title: Metadata
+      url: /api-objects/#metadata-object
+      output: web
+    - title: Asset
+      url: /api-objects/#asset-object
+      output: web
+    - title: Asset Identifier
+      url: /api-objects/#asset-identifier-object
+      output: web
+    - title: Asset Sentiment
+      url: /api-objects/#asset-sentiment-object
+      output: web
+    - title: Datapoint
+      url: /api-objects/#datapoint-object
+      output: web
+    - title: Sentiment
+      url: /api-objects/#sentiment-object
+      output: web
+    - title: Tweet Counts
+      url: /api-objects/#tweet-counts-object
+      output: web      
+    - title: Volume
+      url: /api-objects/#volume-object
+      output: web
+    - title: Theme List
+      url: /api-objects/#theme-list-object
+      output: web
+    - title: Theme
+      url: /api-objects/#theme-object
+      output: web
+
+  - title: Embeddable Widgets
+    output: web
+    folderitems: 
+    - title: Widgets Overview
+      url: /widget-overview/
+      output: web
+    - title: Tweet Stream
+      url: /widget-tweet-stream/
+      output: web
+    - title: Top Content
+      url: /widget-top-content/
+      output: web
+    - title: Alert
+      url: /widget-alert/
+      output: 
+
+  - title: API Clients
+    output: web
+    folderitems:
+    - title: python
+      url: /api-clients
+      output: web
