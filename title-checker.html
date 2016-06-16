@@ -18,9 +18,9 @@ search: exclude
 |___/
 {% endcomment %}
 
-## Mydoc sidebar
+## API sidebar
 
-{% for entry in site.data.sidebars.mydoc_sidebar.entries %}
+{% for entry in site.data.sidebars.api_sidebar.entries %}
 {% for subcategory in entry.subcategories %}
 {% for item in subcategory.items %}
 {% unless item.frontmatter == true %}
@@ -76,7 +76,7 @@ _ __  _ __ ___   __| |_   _  ___| |_/ |
 | .__/|_|  \___/ \__,_|\__,_|\___|\__|_|
 |_|
 {% endcomment %}
-## Mydoc sidebar
+## Product sidebar
 
 {% for entry in site.data.sidebars.product1_sidebar.entries %}
 {% for subcategory in entry.subcategories %}
@@ -135,7 +135,7 @@ _ __  _ __ ___   __| |_   _  ___| |_|___ \
 |_|
 {% endcomment %}
 
-## Mydoc sidebar
+## Product2 sidebar
 
 {% for entry in site.data.sidebars.product2_sidebar.entries %}
 {% for subcategory in entry.subcategories %}

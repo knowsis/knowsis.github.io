@@ -37,6 +37,11 @@ GET /indices/
 GET /forex/
 ```
 
+It is also possible to request the details for upto 100 specific assets at a time using a comma seperated list of identifier values.
+
+```
+GET /assets/{identifier},{identifier},{identifier}/
+```
 
 
 ### Example request/response

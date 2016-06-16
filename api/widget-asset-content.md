@@ -2,7 +2,7 @@
 title: Top Content Widget
 last_updated: June 8, 2016
 sidebar: api_sidebar
-permalink: /widget-top-content/
+permalink: /widget-asset-content/
 ---
 
 This HTML widget contains most shared articles for a particular {identifier} or a list of comma-seperated {identifier}s, and will be automatically updated with new articles via javascript.

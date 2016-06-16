@@ -6,7 +6,6 @@ type: homepage
 permalink: /
 ---
 
-## Overview
 
 The Knowsis API allows developers to add Knowsis analytics to their website and applications. Knowsis sentiment data is derived from 1000s of online sources and is generated through our own proprietary machine learning algorithms. 
 
@@ -36,19 +35,6 @@ The following parameters MUST appear in every request:
 
 The oauth_version parameter is optional; the value will be assumed to be 1.0 if it is not provided.
 
-## Response Formats
+## Response Format
 
-We can render responses for you using JSON. 
-
-The default format is JSON
-
-In order to specify your choice of response format use a standard HTTP Accept header.
-
-
-```
-Accept: application/json, text/javascript
-
-```
-
-
-
+We render all responses as JSON. 

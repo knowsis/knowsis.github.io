@@ -9,7 +9,7 @@ This HTML widget contains the the content for a particular {alert_identifier}.
 
 
 ```
-GET /alerts/{alert_identifier}/
+GET /widgets/alerts/{alert_identifier}/
 ```
 
 

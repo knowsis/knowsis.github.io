@@ -5,7 +5,7 @@ sidebar: api_sidebar
 permalink: /widget-tweet-stream/
 ---
 
-This HTML widget contains the most recent tweets for a particular {identifier} or a list of comma-seperated {identifier}s, and will be automatically updated with any new tweets via javascript.
+This HTML widget contains the most recent tweets for a particular {identifier} or a list of comma-seperated {identifier} values, and will be automatically updated with any new tweets via javascript.
 
 ```
 GET /tweets/{identifier}/

@@ -8,19 +8,19 @@ entries:
   - title: Overview
     output: web
     folderitems:
-    - title: Home
+    - title: Overview
       url: /
       output: web
       type: homepage
     - title: Authentication
       url: /#authentication
       output: web
-    - title: Response Formats
-      url: /#response-formats
+    - title: Response Format
+      url: /#response-format
       output: web
     - title: Push API
       url: /websockets/
-      output:   
+      output:  web
     - title: Identfiers
       url: /api-identifiers/
       output: web
@@ -34,7 +34,7 @@ entries:
     - title: Asset List
       url: /api-assets/
       output: web
-    - title: Assets Details
+    - title: Asset Details
       url: /api-asset-details/
       output: web
     - title: Asset Sentiment
@@ -43,9 +43,9 @@ entries:
     - title: Asset Themes
       url: /api-asset-themes/
       output: web
-    - title: Asset Top Content
-      url: /api-asset-top-content/
-      output: 
+    - title: Asset Content
+      url: /api-asset-content/
+      output: web
 
   - title: API Objects
     output: web
@@ -62,6 +62,12 @@ entries:
     - title: Asset Identifier
       url: /api-objects/#asset-identifier-object
       output: web
+    - title: Endpoints
+      url: /api-objects/#endpoints-object
+      output: web
+    - title: Widgets
+      url: /api-objects/#widgets-object
+      output: web      
     - title: Asset Sentiment
       url: /api-objects/#asset-sentiment-object
       output: web
@@ -70,13 +76,13 @@ entries:
       output: web
     - title: Sentiment
       url: /api-objects/#sentiment-object
-      output: web
-    - title: Tweet Counts
-      url: /api-objects/#tweet-counts-object
-      output: web      
+      output: web        
     - title: Volume
       url: /api-objects/#volume-object
       output: web
+    - title: Tweet Counts
+      url: /api-objects/#tweet-counts-object
+      output: web 
     - title: Theme List
       url: /api-objects/#theme-list-object
       output: web
@@ -93,12 +99,12 @@ entries:
     - title: Tweet Stream
       url: /widget-tweet-stream/
       output: web
-    - title: Top Content
-      url: /widget-top-content/
+    - title: Asset Content
+      url: /widget-asset-content/
       output: web
     - title: Alert
       url: /widget-alert/
-      output: 
+      output: web
 
   - title: API Clients
     output: web
