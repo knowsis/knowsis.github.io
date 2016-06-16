@@ -30,8 +30,6 @@ The asset sentiment endpoint will adhere to the following behaviour:
 
 ### Example request/response
 
-JSON Response
-
 ```
 GET https://api.knows.is/assets/$ARMH/sentiment/?startdate=20121231&enddate=20130101
 Accept: application/json, text/javascript

@@ -14,7 +14,6 @@ GET /assets/{identifier}/themes/
 ```
 
 ### Example request/response
-JSON Response
 
 ```
 GET https://api.knows.is/assets/$ARMH/themes/

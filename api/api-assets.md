@@ -46,7 +46,6 @@ GET /assets/{identifier},{identifier},{identifier}/
 
 ### Example request/response
 
-JSON Response
 
 ```
 GET https://api.knows.is/assets/

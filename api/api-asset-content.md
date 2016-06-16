@@ -5,7 +5,28 @@ sidebar: api_sidebar
 permalink: /api-asset-content/
 ---
 
+The Asset Content endpoint returns a list of the most shared content from across the internet. The default view is the last 24 hours of content.
 
+For API consumers that have licensed our historical asset content data there are optional parameters to get content for a specified date range:
+
+
+| Parameter         | Format   | Description                                                   |
+|-------------------|----------|---------------------------------------------------------------|
+| startdate         | datetime | the start of the requested range                              |
+| enddate           | datetime | the end of the requested range                                |
+
+
+
+```
+GET /assets/{identifier}/content/
+```
+
+## Example request/response
+
+```
+GET https://api.knows.is/assets/ADM.L/content
+Accept: application/json, text/javascript
+```
 
 ```
 

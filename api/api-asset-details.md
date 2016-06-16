@@ -14,8 +14,6 @@ GET /assets/{identifier}/
 
 ## Example request/response
 
-JSON Response
-
 ```
 GET https://api.knows.is/assets/$MSFT/
 Accept: application/json, text/javascript
