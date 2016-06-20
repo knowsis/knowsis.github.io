@@ -67,3 +67,33 @@ Accept: application/json, text/javascript
   ]
 }
 ```
+
+
+## Sentiment & Volume Values
+
+We are able to deliver different sentiment and volume values depending on the account set up. Speak to your API account manager to discuss the best option for your use case.
+
+### Simple Sentiment
+
+We can provide sentiment as a simple range of values (Very Negative, Negative, Neutral, Postive and Very Postive). This is delivered as an integer value from 0-4 respectively.
+
+### Simple Volume
+
+We can provide volume as a simple range of values (Very Low, Low, Normal, high and Very High). This is delivered as an integer value from 0-4 respectively.
+
+
+### Normalised Volume
+
+We are also able to return the current daily volume as a value that has been normalised in comparison to a historic window of volume. This is a decimal value ranging from 0 upwards. 
+
+A value of 0.25 is a quarter of the expected daily volume for this particular asset.
+A value of 1.0 is equivalent ot the expected value for this particular asset. 
+A value of 2.0 is twice the expected value for this particular asset. 
+
+### Raw Counts
+
+We can also provide raw tweet counts, which are the absolute counts of positive, negative and neutral tweets.
+
+
+
+

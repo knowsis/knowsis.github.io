@@ -30,11 +30,12 @@ We will send the following message types via the websocket channel:
 
 ### anomaly_alert_triggered
 
-The anomaly_alert_triggered event will be sent out whenever an anomaly alert for the asset is raised. The payload of the alert will be the alert identifier.
+The anomaly_alert_triggered event will be sent out whenever an anomaly alert for the asset is raised. The payload of the alert will be the alert identifier and the datetime for when the alert was triggered.
 
 ```javascript
 {
     'alert_id': '57602570f3d4f757039a14ef'
+    'trigger_time': "2016-06-02T14:57:56"
 }
 ```
 
@@ -56,11 +57,14 @@ This message is only relevant if you are storing or displaying a list of alerts 
 
 ### datapoint
 
-A datapoint event will be sent out whenever the normalised volume and/or sentiment for the asset has changed. At the moment the payload of this message will be empty and will rely on you making your own call back to our [asset_sentiment](/api-asset-sentiment/) endpoint to retrieve the updated sentiment & volume.
+A datapoint event will be sent out whenever the normalised volume and/or sentiment for the asset has changed. The payload of this message will be the sentiment ([simple](/api-asset-sentiment/#simple-sentiment)) & volume ([normalised](/api-asset-sentiment/#normalised-volume)).
 
 
 ```javascript
-{}
+{
+    'sentiment': 2,
+    'volume': 2.1
+}
 ```
 
 ### tweets
