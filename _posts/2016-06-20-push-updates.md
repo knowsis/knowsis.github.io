@@ -1,5 +1,5 @@
 ---
-title:  "Push API UPdates: Datapoint, Alert"
+title:  "Push API Updates: Datapoint, Alert"
 categories: documentation
 permalink: /2016-06-20/push-api-updates/
 tags: [news]
