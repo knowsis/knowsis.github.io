@@ -86,6 +86,26 @@ A top_content event will be sent out whenever there has been a change to the con
 Alternativey you can use the [Top Content HTML Widget](/widget-top-content/) which provides the aggregated content for the last 6 hours and will automatically update when new content is available.
 
 
+### price
+
+A price data event will be sent out whenever the price of an asset changes. The price data in the price message is delayed.
+
+
+```javascript
+
+{    
+    high: 13.96,
+    last: 13.9501,
+    last_trade: "2016-06-23T11:34:00",
+    low: 13.82,
+    open: 13.84,
+    previous_close: "13.6100",
+    volume: 32801805
+}
+
+
+```
+
 ## Network Security
 
 For information on firewall whitelisting requirements please contact [support@knowsis.com](mailto:support@knowsis.com)
