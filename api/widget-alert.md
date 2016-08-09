@@ -16,7 +16,7 @@ GET /widgets/alerts/{alert_identifier}/
 ## Example Request
 
 ```
-GET https://insights.knows.is/widgets/alert/575ac51af3d4f7468291fd45/?css=https://www.client.com/style.css
+GET https://insights.knows.is/widgets/alerts/575ac51af3d4f7468291fd45/?css=https://www.client.com/style.css
 Accept: text/html
 ```
 
