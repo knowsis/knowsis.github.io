@@ -34,10 +34,14 @@ The anomaly_alert_triggered event will be sent out whenever an anomaly alert for
 
 ```javascript
 {
-    'alert_id': '57602570f3d4f757039a14ef'
-    'trigger_time': "2016-06-02T14:57:56"
+    "alert_id": "57602570f3d4f757039a14ef"
+    "trigger_time": "2016-06-02T14:57:56",
+    "credibility": "high"
 }
 ```
+
+Credibility is a score as to whether the content is from, or has been retweeted by a credible source. Credible sources are accounts that have been identified by Knowsis proprietary systems as credible within the area of capital markets. This can be used for filtering if you only want to show alerts that are considered to be credible. Values currently returned are either "high", "medium" or "unknown".
+
 
 To display the content of an alert you can use the [Alert HTML Widget](/widget-alert/) which accepts the alert id as an 
 
